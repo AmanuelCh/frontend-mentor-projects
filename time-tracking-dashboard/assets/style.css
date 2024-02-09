@@ -47,6 +47,7 @@ body {
 .container {
   width: 88%;
   margin: 0 auto;
+  flex-direction: column;
 }
 
 /* 
@@ -124,6 +125,7 @@ body {
   margin: 30px 0;
   flex-direction: column;
   gap: 30px;
+  width: 100%;
 }
 .cards .card {
   position: relative;
@@ -145,7 +147,6 @@ body {
   z-index: 2;
   padding: 26px 30px;
   transition: var(--transition);
-  z-index: 2;
 }
 .cards .card .card-details:hover {
   cursor: pointer;
@@ -189,4 +190,52 @@ body {
 }
 .cards .card.self-care {
   background-color: var(--clr-primary-self-care);
+}
+
+@media screen and (max-width: 1440px) and (min-width: 990px) {
+  .container {
+    width: min(90%, 60em);
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: stretch;
+    gap: 30px;
+    margin-top: 7rem;
+  }
+  .user-profile {
+    margin-top: 0;
+    max-height: 445px;
+  }
+  .user-profile .user-profile__details {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 50px;
+  }
+  .user-profile__details > div {
+    padding: 10px 30px;
+  }
+  .user-profile .user-profile__details .img-wrapper {
+    margin-top: 20px;
+  }
+  .user-profile .user-profile__details .title {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+  .user-profile__timeframe div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 1rem;
+  }
+  .cards {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cards .card .card-details .duration {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cards .card .card-details .duration .title {
+    font-size: 2.5rem;
+  }
 }
