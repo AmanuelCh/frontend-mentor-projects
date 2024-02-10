@@ -30,23 +30,22 @@ Users should be able to:
 ### Screenshot
 
 ![](./assets/screenshots/desktop_time-tracking-dashboard.png)
-![](./assets/screenshots/mobile_time-tracking-dashboard.png)
 
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/responsive-time-tracking-dashboard-with-vanilla-javascript-FOhRevu3vj)
+- [Live Site URL](https://time-tracking-dashboard-frontend-me.netlify.app/)
 
 ## My process
 
 ### Built with
 
-- HTML
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- JavaScript
+- `HTML`
+- `CSS custom properties`
+- `Flexbox`
+- `CSS Grid`
+- `JavaScript`
 
 
 ## Author
