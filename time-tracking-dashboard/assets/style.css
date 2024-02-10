@@ -189,6 +189,19 @@ body {
   background-color: var(--clr-primary-self-care);
 }
 
+.attribution {
+  font-size: 13px;
+  color: var(--clr-primary-desaturated-blue);
+  margin: 30px 0 50px 0;
+  text-align: center;
+  width: 85%;
+  margin: 0 auto;
+}
+.attribution a {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media screen and (max-width: 1440px) and (min-width: 990px) {
   .container {
     width: min(90%, 60em);
@@ -234,5 +247,12 @@ body {
   }
   .cards .card .card-details .duration .title {
     font-size: 2.5rem;
+  }
+  .attribution {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
   }
 }
