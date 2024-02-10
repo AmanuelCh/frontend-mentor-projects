@@ -159,7 +159,13 @@ const displayActivities = () => {
           </div>
           <div class="duration flex">
             <p class="title">${currentDuration}hrs</p>
-            <p class="indicator">Last Week - ${previousDuration}hrs</p>
+            <p class="indicator">${
+              timeFrame === 'daily'
+                ? 'Yesterday'
+                : timeFrame === 'weekly'
+                ? 'Last Week'
+                : 'Last Month'
+            } - ${previousDuration}hrs</p>
           </div>
         </div>
       </div>
