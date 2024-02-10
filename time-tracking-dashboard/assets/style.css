@@ -147,6 +147,7 @@ body {
   z-index: 2;
   padding: 26px 30px;
   transition: var(--transition);
+  cursor: pointer;
 }
 .cards .card .card-details:hover {
   cursor: pointer;
@@ -166,12 +167,8 @@ body {
 }
 .cards .card .card-details img {
   position: absolute;
-  right: 30px;
-  z-index: -99;
-}
-.cards .card .card-details img:hover {
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.9);
+  right: 20px;
+  padding: 8px 10px;
 }
 .cards .card.work {
   background-color: var(--clr-primary-work);

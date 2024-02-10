@@ -106,15 +106,43 @@ const activities = [
 ];
 
 const cardsEl = document.querySelector('.cards');
+const timeFrames = document.querySelector('.user-profile__timeframe');
+
+let timeFrame = 'weekly';
+
+// Get the current and previous durations based on the time frame
+const getDurations = (activity, timeFrame) => {
+  return {
+    current: activity.timeframes[timeFrame].current,
+    previous: activity.timeframes[timeFrame].previous,
+  };
+};
 
 // display the activity data from the activities array dynamically
 const displayActivities = () => {
+  // empty the container first
+  cardsEl.innerHTML = '';
+
   // loop over the data and get individual object
   activities.map((activity, i) => {
     const type = activity.title;
+
+    let currentDuration;
+    let previousDuration;
+
     // specify the time-frame
-    const currentDuration = activity.timeframes.weekly.current;
-    const previousDuration = activity.timeframes.weekly.previous;
+    if (timeFrame === 'daily') {
+      currentDuration = getDurations(activity, 'daily').current;
+      previousDuration = getDurations(activity, 'daily').previous;
+    }
+    if (timeFrame === 'weekly') {
+      currentDuration = getDurations(activity, 'weekly').current;
+      previousDuration = getDurations(activity, 'weekly').previous;
+    }
+    if (timeFrame === 'monthly') {
+      currentDuration = getDurations(activity, 'monthly').current;
+      previousDuration = getDurations(activity, 'monthly').previous;
+    }
 
     // construct HTML for each activity
     const html = `
@@ -127,7 +155,7 @@ const displayActivities = () => {
         <div class="card-details b8">
           <div class="flex">
             <p class="type">${type}</p>
-            <img src="./assets/images/icon-ellipsis.svg" alt="" />
+            <img src="./assets/images/icon-ellipsis.svg" class="menu" alt="" />
           </div>
           <div class="duration flex">
             <p class="title">${currentDuration}hrs</p>
@@ -141,3 +169,34 @@ const displayActivities = () => {
 };
 
 window.addEventListener('DOMContentLoaded', displayActivities);
+
+// time-frame toggle functionality
+timeFrames.addEventListener('click', (e) => {
+  if (e.target.tagName === 'P') {
+    // Remove the 'title' class from all 'p' tags
+    const pTags = timeFrames.querySelectorAll('p');
+    pTags.forEach((p) => {
+      p.classList.remove('title');
+      p.classList.add('indicator');
+    });
+
+    // Add the 'title' class to the clicked 'p' tag
+    e.target.classList.remove('indicator');
+    e.target.classList.add('title');
+
+    // Set the timeFrame and display the activities
+    timeFrame = e.target.dataset.timeframe;
+    displayActivities();
+  }
+});
+
+cardsEl.addEventListener('mouseover', (e) => {
+  if (e.target.classList.contains('menu')) {
+    e.target.parentElement.parentElement.style.pointerEvents = 'none';
+  }
+});
+cardsEl.addEventListener('mouseout', (e) => {
+  if (e.target.classList.contains('menu')) {
+    e.target.parentElement.parentElement.style.pointerEvents = 'auto';
+  }
+});
