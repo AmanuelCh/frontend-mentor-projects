@@ -5,12 +5,26 @@
 body {
   font-family: "Be Vietnam Pro", sans-serif;
   overflow-x: hidden;
+  background-image: url(./images/bg-tablet-pattern.svg);
+  background-repeat: no-repeat;
+  background-size: 800px;
+  background-position: top -10rem right -12rem;
 }
 
+/* @media (max-width: 976px) {
+  body {
+    background-position: 200px -100px;
+    background-size: 600px;
+  }
+} */
+@media (max-width: 976px) and (min-width: 768px) {
+  body {
+    background-position: 250px 1-00px;
+    background-size: 600px;
+  }
+}
 @media (max-width: 480px) {
   body {
-    background-image: url("./images/bg-tablet-pattern.svg");
-    background-repeat: no-repeat;
     background-position: 50px -50px;
     background-size: 500px;
   }
