@@ -53,15 +53,7 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <div className="background-container">
-        <div className="bg-pattern bg1"></div>
-        <div className="bg-pattern bg2"></div>
-      </div>
-      {/* <img
-        src={background}
-        alt=""
-        className="hidden background absolute -top-1/4 -right-1/4 -z-10 sm:block lg:-top-16 lg:-right-16"
-      /> */}
+
       <div className="md:hidden">
         <div
           className={`absolute flex-col items-center ${
