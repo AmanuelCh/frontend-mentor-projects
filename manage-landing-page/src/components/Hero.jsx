@@ -12,10 +12,7 @@ const Hero = () => {
           while keeping the larger team goals in view.
         </p>
         <div className="flex items-center justify-center pt-3 md:block">
-          <a
-            href="#"
-            className="bg-brightRed p-3 px-6 rounded-full text-white transition-opacity hover:opacity-70"
-          >
+          <a href="#" className="btn btn-primary">
             Get started
           </a>
         </div>

@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn {
+    @apply p-3 px-6 rounded-full text-white transition-opacity hover:opacity-70;
+  }
+  .btn-primary {
+    @apply bg-brightRed;
+  }
+  .btn-secondary {
+    @apply bg-white;
+  }
+  .number {
+    @apply text-white bg-brightRed py-2 px-6 font-bold text-lg rounded-full;
+  }
+}
+
 body {
   /* font-family: "Be Vietnam Pro", sans-serif; */
   overflow-x: hidden;

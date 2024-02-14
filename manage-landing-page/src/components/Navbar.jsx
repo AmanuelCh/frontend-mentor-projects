@@ -36,10 +36,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="hidden md:flex">
-          <a
-            href="#"
-            className="bg-brightRed p-3 px-6 rounded-full text-white transition-opacity hover:opacity-70"
-          >
+          <a href="#" className="btn btn-primary">
             Get Started
           </a>
         </div>
