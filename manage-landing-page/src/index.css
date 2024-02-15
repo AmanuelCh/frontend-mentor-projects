@@ -10,7 +10,7 @@
     @apply bg-brightRed;
   }
   .btn-secondary {
-    @apply bg-white;
+    @apply bg-white text-brightRed border hover:border hover:border-white hover:border-solid hover:text-white hover:bg-transparent transition;
   }
   .number {
     @apply text-white bg-brightRed py-2 px-6 font-bold text-lg rounded-full;
