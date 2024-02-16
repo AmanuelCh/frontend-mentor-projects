@@ -5,6 +5,11 @@ import { facebookIcon, youtubeIcon, twitterIcon, pinterestIcon, instagramIcon } 
 
 const Footer = () => {
   const [email, setEmail] = useState('')
+  const [validEmail, setValidEmail] = useState(true)
+
+  const checkEmail = () => {
+    email && email.includes('@gmail.com') ? setValidEmail(true) : setValidEmail(false)
+  }
 
   return (
     <div className="bg-veryDarkBlue py-24 w-full relative">
@@ -37,9 +42,10 @@ const Footer = () => {
         </div>
 
         <div>
-          <div className='space-x-2'>
-            <input type="email" value={email} className="py-3 px-2 pl-6 rounded-full text-darkBlue focus:outline-none active:outline-none" onChange={e => setEmail(e.target.value)} placeholder='someone@gmail.com' required/>
-            <button className="btn btn-primary">Go</button>
+          <div className='space-x-2 relative'>
+            <input type="email" value={email} className={`py-3 px-2 pl-6 rounded-full text-darkBlue focus:outline-none active:outline-none ${!validEmail ? 'border border-red-500 border-solid text-red-500' : null}`} onChange={e => setEmail(e.target.value)} placeholder='someone@gmail.com' required/>
+            <button className="btn btn-primary" onClick={checkEmail}>Go</button>
+            {!validEmail? <p className='text-red-500 absolute text-sm italic'>Please enter a valid email</p> : null}
           </div>
         </div>
       </div>

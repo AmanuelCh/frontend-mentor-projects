@@ -17,7 +17,7 @@ const About = () => {
           <div className="flex items-stretch md:items-start">
             <p className="number">01</p>
             <div className="bg-veryPaleRed w-full rounded-full -ml-8 -z-10 flex items-center md:hidden">
-              <h3 className="ml-12 text-darkBlue text-base font-semibold">
+              <h3 className="ml-12 text-darkBlue text-[15px] font-semibold">
                 Track company-wide progress
               </h3>
             </div>
@@ -44,7 +44,7 @@ const About = () => {
           <div className="flex items-stretch md:items-start">
             <p className="number">02</p>
             <div className="bg-veryPaleRed w-full rounded-full -ml-8 -z-10 flex items-center md:hidden">
-              <h3 className="ml-12 text-darkBlue text-base font-semibold">
+              <h3 className="ml-12 text-darkBlue text-base font-semibold text-[15px]">
                 Advanced built-in reports
               </h3>
             </div>
@@ -71,7 +71,7 @@ const About = () => {
           <div className="flex items-stretch md:items-start">
             <p className="number">03</p>
             <div className="bg-veryPaleRed w-full rounded-full -ml-8 -z-10 flex items-center md:hidden">
-              <h3 className="ml-12 text-darkBlue text-base font-semibold">
+              <h3 className="ml-12 text-darkBlue text-base font-semibold text-[14px]">
                 Everything you need in one place
               </h3>
             </div>

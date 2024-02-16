@@ -20,7 +20,7 @@ export default {
         veryLightGray: "hsl(0, 0%, 98%)",
       },
       fontFamily: {
-        // display: ["Be Vietnam Pro", "sans-serif"],
+        display: ["Be Vietnam Pro", "sans-serif"],
       },
     },
   },

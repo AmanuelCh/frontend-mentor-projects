@@ -1,25 +1,35 @@
-
+import Carousel from "nuka-carousel"
 import {testimonials} from '../constants/index.js'
+import useMedia from 'use-media';
 
 const Testimonials = () => {
+  const isWide = useMedia({ minWidth: '976px' });
+
   return (
     <div className="container mx-auto flex flex-col items-center px-6 my-20 space-y-28 md:mb-32">
       <h3 className="max-w-md font-bold text-center text-darkBlue text-3xl lg:text-left lg:4xl">What they’ve said</h3>
 
-      <div className='grid grid-cols-1 gap-24 md:grid-cols-2 xl:grid-cols-4'
-       >
+      <Carousel
+        autoplay={true}
+        autoplayInterval={5000}
+        scrollMode={'remainder'}
+        slidesToShow={isWide ? 3 : 1}
+        withoutControls={true}
+        wrapAround={true}
+        pauseOnHover={false}
+      >
         {
           testimonials.map(testimony=> (
-            <div className='p-6 pt-0 pb-10 bg-veryLightGray'>
+            <div className='p-6 pt-0 pb-10 bg-veryLightGray mt-[40px] mr-6 ml-6'>
               <div className='flex flex-col items-center gap-4'>
                 <img src={testimony.imgURL} className='w-[80px] -mt-[40px]' alt={testimony.name} />
                 <h3 className='text-darkBlue text-lg font-semibold text-center'>{testimony.name}</h3>
-                <p className="text-darkGrayishBlue text-center">{testimony.content}</p>
+                <p className="text-darkGrayishBlue text-center max-w-[20rem] lg:max-w-lg">{testimony.content}</p>
               </div>
             </div>
           ))
         }
-      </div>
+      </Carousel>
       
       <div>
         <button className="btn btn-primary">Get started</button>
