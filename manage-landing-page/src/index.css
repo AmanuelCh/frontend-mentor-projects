@@ -32,11 +32,13 @@ body {
   body {
     background-position: 250px 1-00px;
     background-size: 600px;
+    overflow-x: hidden;
   }
 }
 @media (max-width: 480px) {
   body {
     background-position: 50px -50px;
     background-size: 500px;
+    overflow-x: hidden;
   }
 }
