@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply p-3 px-6 rounded-full text-white transition-opacity hover:opacity-70;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
