@@ -6,9 +6,16 @@
   .btn {
     @apply p-3 px-6 rounded-full text-white transition-opacity hover:opacity-70;
   }
+  .checkBackground {
+    background: linear-gradient(to bottom left, #57ddff, #c058f3);
+  }
 }
 
 * {
   margin: 0;
   padding: 0;
+}
+
+header {
+  height: min(375px, 480px);
 }
