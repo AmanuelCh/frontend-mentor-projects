@@ -10,7 +10,7 @@ const Header = ({ dark, isDesktop }) => {
     <>
       {isDesktop < 480 ? (
         <header
-          className='bg-contain bg-no-repeat w-full absolute -z-10 overflow-hidden dark:bg-veryDarkBlue'
+          className='bg-contain bg-no-repeat w-full h-[1440px] absolute -z-10 overflow-hidden dark:bg-veryDarkBlue'
           style={{
             backgroundImage: `url(${dark ? bgDarkMobile : bgLightMobile})`,
           }}

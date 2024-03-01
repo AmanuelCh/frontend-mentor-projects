@@ -25,7 +25,7 @@ export default {
         lightGrayishBlueDark: 'hsl(234, 39%, 85%)',
         lightGrayishBlueHover: 'hsl(236, 33%, 92%)',
         darkGrayishBlue: 'hsl(234, 11%, 52%)',
-        veryDarkGrayishBlue: 'hsl(233, 14%, 35%)',
+        veryDarkGrayishBlueDark: 'hsl(233, 14%, 35%)',
         veryDarkGrayishBlueInput: 'hsl(237, 14%, 26%)',
       },
       // fontFamily: {
