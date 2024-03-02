@@ -1,6 +1,6 @@
 import { checkIcon } from '../constants';
 
-const Item = ({ item }) => {
+const Item = ({ item, onCheckItem }) => {
   return (
     <div className='relative py-4 pl-[53px] border-b border-lightGrayishBlue dark:border-veryDarkGrayishBlueInput'>
       <p
@@ -14,7 +14,10 @@ const Item = ({ item }) => {
       </p>
 
       {item.completed ? (
-        <div className='w-5 h-5 rounded-full absolute top-[50%] left-[20px] translate-y-[-50%] cursor-pointer checkBackground'>
+        <div
+          className='w-5 h-5 rounded-full absolute top-[50%] left-[20px] translate-y-[-50%] cursor-pointer checkBackground'
+          onClick={() => onCheckItem(item.id)}
+        >
           <img
             src={checkIcon}
             className='absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]'
@@ -22,7 +25,10 @@ const Item = ({ item }) => {
           />
         </div>
       ) : (
-        <div className='w-5 h-5 rounded-full absolute top-[50%] left-[20px] translate-y-[-50%] cursor-pointer border-veryLightGrayishBlue dark:border-veryDarkGrayishBlueInput border-[1px]'></div>
+        <div
+          className='w-5 h-5 rounded-full absolute top-[50%] left-[20px] translate-y-[-50%] cursor-pointer border-veryLightGrayishBlue dark:border-veryDarkGrayishBlueInput border-[1px]'
+          onClick={() => onCheckItem(item.id)}
+        ></div>
       )}
     </div>
   );

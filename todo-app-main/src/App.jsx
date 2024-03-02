@@ -7,11 +7,33 @@ import Items from './components/Items';
 // update the font-family
 
 function App() {
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      title: '10 minutes meditation',
+      completed: true,
+    },
+    {
+      id: 2,
+      title: 'Read for 1 hour',
+      completed: false,
+    },
+  ]);
   const [isDark, setIsDark] = useState(false);
   const [isDesktop, setIsDesktop] = useState(375);
 
+  // toggle dark mode
   const handleDarkToggle = () => {
     setIsDark(!isDark);
+  };
+
+  // checkbox
+  const handleCheckItem = (id) => {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, completed: !item.completed } : item
+      )
+    );
   };
 
   return (
@@ -24,7 +46,10 @@ function App() {
         dark={isDark}
         onDarkToggle={handleDarkToggle}
       />
-      <Items />
+      <Items
+        items={items}
+        onCheckItem={handleCheckItem}
+      />
     </div>
   );
 }
