@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 @layer components {
-  .btn {
-    @apply p-3 px-6 rounded-full text-white transition-opacity hover:opacity-70;
+  .filter-btn {
+    @apply cursor-pointer hover:text-veryDarkGrayishBlueInput transition-colors dark:hover:text-lightGrayishBlueHover;
+  }
+  .filter-btn--mobile {
+    @apply bg-veryLightGray rounded-[4px] text-veryDarkGrayishBlue shadow-xl dark:bg-veryDarkDesaturatedBlue dark:text-lightGrayishBlueDark;
   }
   .checkBackground {
     background: linear-gradient(to bottom left, #57ddff, #c058f3);
@@ -16,6 +19,21 @@
   padding: 0;
 }
 
-/* header {
-  height: min(375px, 480px);
-} */
+header {
+  width: 100%;
+  max-width: 768px;
+}
+.active {
+  color: #3a7bfd;
+  font-weight: bold;
+}
+
+.filter {
+  padding: 15px 0;
+}
+
+@media (min-width: 768px) {
+  header {
+    max-width: 100%;
+  }
+}

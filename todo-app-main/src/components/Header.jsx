@@ -7,23 +7,23 @@ import {
 
 const Header = ({ dark, isDesktop }) => {
   return (
-    <>
-      {isDesktop < 480 ? (
-        <header
-          className='bg-contain bg-no-repeat w-full h-[1440px] absolute -z-10 overflow-hidden dark:bg-veryDarkBlue'
-          style={{
-            backgroundImage: `url(${dark ? bgDarkMobile : bgLightMobile})`,
-          }}
-        ></header>
+    <div className='absolute'>
+      {isDesktop < 768 ? (
+        <header>
+          <img
+            src={dark ? bgDarkMobile : bgLightMobile}
+            className='w-[768px]'
+          />
+        </header>
       ) : (
-        <header
-          className='bg-contain bg-no-repeat h-[1440px] w-full absolute -z-10 overflow-hidden dark:bg-veryDarkBlue'
-          style={{
-            backgroundImage: `url(${dark ? bgDarkDesktop : bgLightDesktop})`,
-          }}
-        ></header>
+        <header>
+          <img
+            src={dark ? bgDarkDesktop : bgLightDesktop}
+            className='w-full'
+          />
+        </header>
       )}
-    </>
+    </div>
   );
 };
 

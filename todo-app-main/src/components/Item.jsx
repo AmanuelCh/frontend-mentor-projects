@@ -1,14 +1,17 @@
-import { checkIcon } from '../constants';
+import { checkIcon, crossIcon } from '../constants';
 
-const Item = ({ item, onCheckItem }) => {
+const Item = ({ item, onCheckItem, onDeleteItem }) => {
   return (
-    <div className='relative py-4 pl-[53px] border-b border-lightGrayishBlue dark:border-veryDarkGrayishBlueInput'>
+    <div className='relative py-4 pl-[53px] border-b border-lightGrayishBlue dark:border-veryDarkGrayishBlueInput group'>
       <p
-        className={
-          item.completed
-            ? 'line-through text-lightGrayishBlue dark:text-veryDarkGrayishBlueDark'
-            : ''
-        }
+        className={` cursor-pointer max-w-[250px] lg:max-w-[510px]
+          ${
+            item.completed
+              ? 'line-through text-lightGrayishBlue dark:text-veryDarkGrayishBlueDark hover:text-darkGrayishBlue dark:hover:text-darkGrayishBlue'
+              : 'hover:text-veryDarkDesaturatedBlue dark:hover:text-veryLightGray'
+          }
+        `}
+        onClick={() => onCheckItem(item.id)}
       >
         {item.title}
       </p>
@@ -30,6 +33,28 @@ const Item = ({ item, onCheckItem }) => {
           onClick={() => onCheckItem(item.id)}
         ></div>
       )}
+
+      <div className='absolute top-2 right-2 rounded-full w-[12px] lg:top-[50%] lg:translate-y-[-50%] lg:right-4 lg:w-[18px] hidden group-hover:block'>
+        {/* <p className='text-[12px] cursor-pointer'>✖</p> */}
+        <img
+          src={crossIcon}
+          className='w-full cursor-pointer'
+          alt='delete the todo'
+          onClick={() => onDeleteItem(item.id)}
+        />
+      </div>
+
+      {item.completed ? (
+        <div className='absolute top-2 right-2 rounded-full w-[12px] lg:top-[50%] lg:translate-y-[-50%] lg:right-4 lg:w-[18px]'>
+          {/* <p className='text-[12px] cursor-pointer'>✖</p> */}
+          <img
+            src={crossIcon}
+            className='w-full cursor-pointer'
+            alt='delete the todo'
+            onClick={() => onDeleteItem(item.id)}
+          />
+        </div>
+      ) : null}
     </div>
   );
 };
