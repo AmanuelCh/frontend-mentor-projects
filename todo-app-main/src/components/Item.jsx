@@ -1,8 +1,28 @@
+import { useState } from 'react';
 import { checkIcon, crossIcon } from '../constants';
 
 const Item = ({ item, onCheckItem, onDeleteItem }) => {
+  const [dragging, setDragging] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+
   return (
-    <div className='relative py-4 pl-[53px] border-b border-lightGrayishBlue dark:border-veryDarkGrayishBlueInput group'>
+    <div
+      className={`relative py-4 pl-[53px] border-b border-lightGrayishBlue dark:border-veryDarkGrayishBlueInput group ${
+        dragging ? 'bg-veryLightGrayishBlue dark:bg-[#30314e]' : ''
+      } ${dragOver ? 'bg-veryLightGrayishBlue dark:bg-[#30314e]' : ''}`}
+      draggable='true'
+      onDrag={() => setDragging(true)}
+      onDragEnd={() => setDragging(false)}
+      onDragOver={(e) => {
+        e.preventDefault();
+        setDragOver(true);
+      }}
+      onDragEnter={() => setDragOver(true)}
+      onDragLeave={() => setDragOver(false)}
+      onDrop={() => {
+        setDragOver(false);
+      }}
+    >
       <p
         className={` cursor-pointer max-w-[250px] lg:max-w-[510px]
           ${

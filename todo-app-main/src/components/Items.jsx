@@ -9,19 +9,17 @@ const Items = ({
   onDeleteItem,
   onClearItems,
 }) => {
-  const [sortedItems, setSortedItems] = useState(items);
+  const [sortBy, setSortBy] = useState('all');
 
-  // filter by active
-  const handleActiveFilter = () => {
-    setSortedItems((sortedItems) => items.filter((item) => !item.completed));
-    console.log(sortedItems);
-  };
+  let sortedItems;
 
-  // filter by completed
-  const handleCompletedFilter = () => {
-    setSortedItems((sortedItems) => items.filter((item) => item.completed));
-    console.log(sortedItems);
-  };
+  if (sortBy === 'all') sortedItems = items;
+
+  if (sortBy === 'active')
+    sortedItems = items.filter((item) => !item.completed);
+
+  if (sortBy === 'completed')
+    sortedItems = items.filter((item) => item.completed);
 
   return (
     <div className='max-w-xl lg:max-w-2xl mx-auto mt-6 relative z-20 lg:overflow-hidden'>
@@ -30,7 +28,7 @@ const Items = ({
           items.length === 0 ? 'shadow-none' : null
         }`}
       >
-        {items.map((item) => (
+        {sortedItems.map((item) => (
           <Item
             item={item}
             key={item.id}
@@ -42,9 +40,9 @@ const Items = ({
         <Filter
           isDesktop={isDesktop}
           onClearItems={onClearItems}
-          onActiveFilter={handleActiveFilter}
-          onCompletedFilter={handleCompletedFilter}
-          items={items}
+          items={sortedItems}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
         />
       </div>
     </div>

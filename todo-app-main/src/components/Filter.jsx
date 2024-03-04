@@ -1,34 +1,40 @@
 import { useState } from 'react';
 
-const Filter = ({
-  isDesktop,
-  onClearItems,
-  onActiveFilter,
-  onCompletedFilter,
-  items,
-}) => {
+const Filter = ({ isDesktop, onClearItems, items, sortBy, setSortBy }) => {
+  const numItems = items.length;
   const itemsLeft = items.filter((item) => !item.completed).length;
-  const percentage = Math.round((itemsLeft / items.length) * 100);
+  const percentage = Math.round((itemsLeft / numItems) * 100);
 
   return (
     <div className='py-3 pb-0 lg:pb-3 md:mb-6'>
       {isDesktop > 768 ? (
         <div className='mx-7 flex justify-between text-sm text-darkGrayishBlue'>
-          <p>
-            {itemsLeft} items Left (
-            {percentage ? 100 - percentage : items.length === 0 ? 0 : 100}%)
-          </p>
+          {sortBy === 'all' ? (
+            <p>
+              {itemsLeft} items Left (
+              {percentage ? 100 - percentage : numItems === 0 ? 0 : 100}%)
+            </p>
+          ) : sortBy === 'active' ? (
+            <p>{numItems} items left</p>
+          ) : (
+            <p>{numItems} items completed</p>
+          )}
           <div className='flex gap-5'>
-            <p className='filter-btn active'>All</p>
             <p
-              className='filter-btn'
-              onClick={onActiveFilter}
+              className={`filter-btn ${sortBy === 'all' ? 'active' : ''}`}
+              onClick={() => setSortBy('all')}
+            >
+              All
+            </p>
+            <p
+              className={`filter-btn ${sortBy === 'active' ? 'active' : ''}`}
+              onClick={() => setSortBy('active')}
             >
               Active
             </p>
             <p
-              className='filter-btn'
-              onClick={onCompletedFilter}
+              className={`filter-btn ${sortBy === 'completed' ? 'active' : ''}`}
+              onClick={() => setSortBy('completed')}
             >
               Completed
             </p>
@@ -43,10 +49,16 @@ const Filter = ({
       ) : (
         <div>
           <div className='mx-7 flex justify-between text-sm text-darkGrayishBlue'>
-            <p>
-              {itemsLeft} items Left (
-              {percentage ? 100 - percentage : items.length === 0 ? 0 : 100}%)
-            </p>
+            {sortBy === 'all' ? (
+              <p>
+                {itemsLeft} items Left (
+                {percentage ? 100 - percentage : numItems === 0 ? 0 : 100}%)
+              </p>
+            ) : sortBy === 'active' ? (
+              <p>{numItems} items left</p>
+            ) : (
+              <p>{numItems} items completed</p>
+            )}
             <p
               className='filter-btn'
               onClick={onClearItems}
@@ -57,22 +69,29 @@ const Filter = ({
 
           <div
             className={`max-w-xl lg:max-w-2xl  w-full mt-4 dark:bg-veryDarkBlue ${
-              items.length === 0
+              numItems === 0
                 ? 'dark:bg-transparent'
                 : 'dark:filter pt-1 dark:pt-4'
             }`}
           >
             <div className='gap-8 px-4 flex justify-center filter filter-btn--mobile w-full'>
-              <p className='filter-btn active'>All</p>
               <p
-                className='filter-btn'
-                onClick={onActiveFilter}
+                className={`filter-btn ${sortBy === 'all' ? 'active' : ''}`}
+                onClick={() => setSortBy('all')}
+              >
+                All
+              </p>
+              <p
+                className={`filter-btn ${sortBy === 'active' ? 'active' : ''}`}
+                onClick={() => setSortBy('active')}
               >
                 Active
               </p>
               <p
-                className='filter-btn'
-                onClick={onCompletedFilter}
+                className={`filter-btn ${
+                  sortBy === 'completed' ? 'active' : ''
+                }`}
+                onClick={() => setSortBy('completed')}
               >
                 Completed
               </p>

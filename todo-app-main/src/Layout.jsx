@@ -16,7 +16,7 @@ const Layout = ({ isDark, onDarkToggle }) => {
       completed: false,
     },
   ]);
-  const [isDesktop, setIsDesktop] = useState(781);
+  const [isDesktop, setIsDesktop] = useState(381);
 
   // add items
   const handleAddItem = (newItem) => {
