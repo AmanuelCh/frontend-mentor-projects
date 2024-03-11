@@ -18,6 +18,9 @@
   margin: 0;
   padding: 0;
 }
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
 
 header {
   width: 100%;

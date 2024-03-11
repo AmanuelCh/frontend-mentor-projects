@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import Layout from './Layout';
 
-//  TODO: use a hook to determine screen's width and update isDesktop state based on that
-// update the font-family
-
 function App() {
   const [isDark, setIsDark] = useState(false);
 

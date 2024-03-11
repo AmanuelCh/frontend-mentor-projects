@@ -7,7 +7,7 @@ const Filter = ({ isDesktop, onClearItems, items, sortBy, setSortBy }) => {
 
   return (
     <div className='py-3 pb-0 lg:pb-3 md:mb-6'>
-      {isDesktop > 768 ? (
+      {isDesktop ? (
         <div className='mx-7 flex justify-between text-sm text-darkGrayishBlue'>
           {sortBy === 'all' ? (
             <p>
@@ -43,7 +43,7 @@ const Filter = ({ isDesktop, onClearItems, items, sortBy, setSortBy }) => {
             className='filter-btn'
             onClick={onClearItems}
           >
-            Clear Completed
+            Clear Items
           </p>
         </div>
       ) : (
@@ -63,7 +63,7 @@ const Filter = ({ isDesktop, onClearItems, items, sortBy, setSortBy }) => {
               className='filter-btn'
               onClick={onClearItems}
             >
-              Clear Completed
+              Clear Items
             </p>
           </div>
 

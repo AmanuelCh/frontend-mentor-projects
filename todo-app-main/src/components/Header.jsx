@@ -8,18 +8,18 @@ import {
 const Header = ({ dark, isDesktop }) => {
   return (
     <div className='absolute'>
-      {isDesktop < 768 ? (
+      {isDesktop ? (
         <header>
           <img
-            src={dark ? bgDarkMobile : bgLightMobile}
-            className='w-[768px]'
+            src={dark ? bgDarkDesktop : bgLightDesktop}
+            className='w-full'
           />
         </header>
       ) : (
         <header>
           <img
-            src={dark ? bgDarkDesktop : bgLightDesktop}
-            className='w-full'
+            src={dark ? bgDarkMobile : bgLightMobile}
+            className='w-[768px]'
           />
         </header>
       )}

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import useMedia from 'use-media';
+
 import Header from './components/Header';
 import Input from './components/Input';
 import Items from './components/Items';
@@ -16,7 +18,7 @@ const Layout = ({ isDark, onDarkToggle }) => {
       completed: false,
     },
   ]);
-  const [isDesktop, setIsDesktop] = useState(381);
+  const isDesktop = useMedia({ minWidth: '768px' });
 
   // add items
   const handleAddItem = (newItem) => {
@@ -53,6 +55,7 @@ const Layout = ({ isDark, onDarkToggle }) => {
         onDarkToggle={onDarkToggle}
         onAddItem={handleAddItem}
       />
+
       <Items
         items={items}
         isDesktop={isDesktop}

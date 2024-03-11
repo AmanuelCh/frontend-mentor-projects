@@ -28,9 +28,9 @@ export default {
         veryDarkGrayishBlueDark: 'hsl(233, 14%, 35%)',
         veryDarkGrayishBlueInput: 'hsl(237, 14%, 26%)',
       },
-      // fontFamily: {
-      //   display: ['Josefin Sans', 'sans-serif'],
-      // },
+      fontFamily: {
+        display: ['Josefin Sans', 'sans-serif'],
+      },
     },
   },
   plugins: [],
