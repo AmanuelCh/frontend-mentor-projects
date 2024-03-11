@@ -35,8 +35,8 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL](https://your-solution-url.com)
-- [Live Site URL](https://your-live-site-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/a-todo-app-with-lightdark-theme-toggle-using-react-tailwind-and-vite-c3bUOjvAB5)
+- [Live Site URL](https://todo-app-frontend-me.netlify.app/)
 
 ## My process
 
