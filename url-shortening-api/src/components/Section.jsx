@@ -3,8 +3,7 @@ import Input from './Input';
 
 const Section = () => {
   return (
-    <div className='mt-24 mb-20 relative '>
-      {/* bg-[#f0f1f6] */}
+    <div className='mt-24 mb-20 pb-20 relative bg-[#f0f1f6]'>
       <Input />
       <Statistics />
     </div>
