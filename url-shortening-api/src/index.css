@@ -10,7 +10,7 @@
     @apply text-grayishViolet font-bold;
   }
   .body-text {
-    @apply text-grayDefault;
+    @apply text-grayishViolet;
   }
   .menu {
     @apply w-[20px] h-[2px] bg-gray-500 mb-[5px];
@@ -24,4 +24,36 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+.input-bg {
+  background-image: url('./assets/bg-boost-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (min-width: 480px) {
+  .input-bg,
+  .statistics {
+    max-width: 480px;
+  }
+}
+@media (min-width: 768px) {
+  .input-bg,
+  .statistics {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 970px) {
+  .input-bg {
+    background-image: url('./assets/bg-boost-desktop.svg');
+    max-width: 976px;
+  }
+}
+@media (min-width: 1440px) {
+  .input-bg {
+    max-width: 1440px;
+  }
 }

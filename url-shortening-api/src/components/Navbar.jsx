@@ -41,7 +41,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className='bg-darkViolet absolute top-14 py-6 w-[90%] rounded-md block lg:hidden'>
+        <div className='bg-darkViolet absolute top-14 py-6 w-[90%] rounded-md z-20 block lg:hidden'>
           <div className='flex flex-col items-center '>
             <ul className='w-[80%] pb-6 gap-6 text-white space-y-6 text-center font-semibold border-b-[1px] border-solid  border-gray-500'>
               <li className='cursor-pointer hover:text-gray-300'>Features</li>

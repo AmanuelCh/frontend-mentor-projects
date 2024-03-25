@@ -1,7 +1,6 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Input from './components/Input';
-import Statistics from './components/Statistics';
+import Section from './components/Section';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 
@@ -25,6 +24,8 @@ function App() {
   return (
     <div>
       <Navbar />
+      <Hero />
+      <Section />
     </div>
   );
 }
