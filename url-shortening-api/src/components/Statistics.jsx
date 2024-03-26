@@ -60,13 +60,13 @@ const Statistics = () => {
           statistics dashboard.
         </p>
 
-        <div className='flex flex-col gap-24 mt-28 lg:flex-row'>
+        <div className='flex flex-col gap-24 mt-28 lg:flex-row lg:gap-8 lg:items-start'>
           {statistics.map((stat) => (
             <div
-              className='px-6 relative bg-white shadow-sm pb-6 rounded-md'
+              className='px-6 relative bg-white shadow-sm pb-8 rounded-md lg:pb-10 stats'
               key={stat.id}
             >
-              <div className='absolute left-1/2 -top-1/2 translate-y-[90%] translate-x-[-50%] bg-darkViolet p-5 rounded-full'>
+              <div className='absolute left-1/2 -top-1/2 translate-y-[90%] translate-x-[-50%] bg-darkViolet p-5 rounded-full lg:left-1/4 lg:translate-y-[110%]'>
                 <img
                   src={stat.imgSrc}
                   className=''
@@ -74,11 +74,13 @@ const Statistics = () => {
                 />
               </div>
 
-              <p className='text-2xl font-semibold text-veryDarkBlue mt-16 text-center'>
+              <p className='text-2xl font-semibold text-veryDarkBlue mt-16 text-center lg:text-left'>
                 {stat.title}
               </p>
 
-              <p className='body-text text-center mt-4'>{stat.desc}</p>
+              <p className='body-text text-center mt-4 lg:text-left'>
+                {stat.desc}
+              </p>
             </div>
           ))}
         </div>

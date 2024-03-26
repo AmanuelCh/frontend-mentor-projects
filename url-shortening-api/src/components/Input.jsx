@@ -1,6 +1,3 @@
-import InputSVGDesktop from '../assets/bg-shorten-desktop.svg';
-import InputSVGMobile from '../assets/bg-shorten-mobile.svg';
-
 const Input = () => {
   return (
     <div className='input-bg max-w-[90%] container mx-auto bg-darkViolet rounded-md'>

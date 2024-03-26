@@ -10,8 +10,8 @@ const Link = ({ link }) => {
           <p className='text-cyanDefault'>{link.shortenedLink}</p>
 
           <button
-            className={`btn rounded-md py-2 w-full lg:w-auto lg:py-3 hover:opacity-50 ${
-              link.isCopied ? 'bg-darkViolet' : ''
+            className={`w-full px-6 lg:w-[7rem] border-none text-white rounded-md py-2 lg:py-3 hover:opacity-50 ${
+              link.isCopied ? 'bg-darkViolet' : 'bg-cyanDefault'
             }`}
           >
             {link.isCopied ? 'Copied' : 'Copy'}

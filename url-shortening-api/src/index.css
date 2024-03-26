@@ -27,10 +27,47 @@ body {
   overflow-x: hidden;
 }
 
+ul {
+  list-style: none;
+}
+li {
+  margin-top: 8px;
+}
+li:hover {
+  color: #2acfcf;
+  cursor: pointer;
+}
+
 .input-bg {
   background-image: url('./assets/bg-boost-mobile.svg');
   background-repeat: no-repeat;
   background-size: cover;
+}
+.cta-bg {
+  background-image: url('./assets/bg-boost-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.stats {
+  position: relative;
+}
+.stats::after {
+  content: '';
+  position: absolute;
+  background-color: #2acfcf;
+}
+
+@media (max-width: 970px) {
+  .stats::after {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 7rem;
+  }
+  .stats:nth-child(3)::after {
+    display: none;
+  }
 }
 
 @media (min-width: 480px) {
@@ -50,6 +87,31 @@ body {
   .input-bg {
     background-image: url('./assets/bg-boost-desktop.svg');
     max-width: 976px;
+  }
+  .cta-bg {
+    background-image: url('./assets/bg-boost-desktop.svg');
+  }
+  .stats:nth-child(2) {
+    margin-top: 2.5rem;
+  }
+  .stats:nth-child(3) {
+    margin-top: 5rem;
+  }
+  .stats::after {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 7px;
+  }
+  .stats:nth-child(1)::after {
+    display: none;
+  }
+  .stats:nth-child(2)::after {
+    top: calc(50% - 2.5rem);
+  }
+  .stats:nth-child(3)::after {
+    top: calc(50% - 5rem);
   }
 }
 @media (min-width: 1440px) {

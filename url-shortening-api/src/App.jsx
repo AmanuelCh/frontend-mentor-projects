@@ -26,6 +26,8 @@ function App() {
       <Navbar />
       <Hero />
       <Section />
+      <CTA />
+      <Footer />
     </div>
   );
 }
