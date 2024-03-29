@@ -4,21 +4,6 @@ import BrandSVG from '../assets/icon-brand-recognition.svg';
 import RecordsSVG from '../assets/icon-detailed-records.svg';
 import CustomizableSVG from '../assets/icon-fully-customizable.svg';
 
-const tempLinks = [
-  {
-    id: 1,
-    link: 'htts://www.linkedin.com/company/non-of-your-business',
-    shortenedLink: 'htts://rel.ink/k342wdfs',
-    isCopied: false,
-  },
-  {
-    id: 2,
-    link: 'htts://www.linkedin.com/company/non-of-your-business',
-    shortenedLink: 'htts://rel.ink/k342wdfs',
-    isCopied: true,
-  },
-];
-
 const statistics = [
   {
     id: 1,
@@ -40,10 +25,10 @@ const statistics = [
   },
 ];
 
-const Statistics = () => {
+const Statistics = ({ links }) => {
   return (
     <div className='statistics max-w-[90%] container mx-auto lg:max-w-[976px] xl:max-w-[1440px]'>
-      {tempLinks.map((link) => (
+      {links.map((link) => (
         <Link
           link={link}
           key={link.id}
