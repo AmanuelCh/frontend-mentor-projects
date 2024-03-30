@@ -3,7 +3,7 @@ const Link = ({ link }) => {
     <div>
       <div className='flex justify-between items-start lg:items-center bg-white mt-4 py-3 px-4 rounded-md flex-col lg:flex-row'>
         <p className='text-veryDarkBlue w-[90%] truncate border-b border-gray-300 pb-2 lg:w-auto lg:border-b-0 lg:pb-0'>
-          {link.link}
+          {link.originalLink}
         </p>
 
         <div className='flex items-start gap-4 flex-col w-full pt-2 lg:w-auto lg:flex-row lg:pt-0 lg:items-center'>

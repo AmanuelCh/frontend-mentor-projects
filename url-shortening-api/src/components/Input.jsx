@@ -2,18 +2,15 @@ import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Input = ({ setLink, onShortenURL }) => {
-  const [inputValue, setInputValue] = useState('');
-
+const Input = ({ link, setLink, onShortenURL }) => {
   const notifyError = () => toast.error('Invalid Input!');
 
   const handleInput = () => {
-    if (!inputValue) {
+    if (!link) {
       notifyError();
       return;
     }
 
-    setLink(inputValue);
     onShortenURL();
   };
 
@@ -23,8 +20,8 @@ const Input = ({ setLink, onShortenURL }) => {
         <input
           type='text'
           className='bg-white py-3 pl-6 rounded-md w-full outline-none'
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={link}
+          onChange={(e) => setLink(e.target.value)}
           placeholder='Shorten a link here'
         />
         <button

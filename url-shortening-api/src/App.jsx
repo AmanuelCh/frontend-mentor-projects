@@ -12,42 +12,60 @@ import Footer from './components/Footer';
 const tempLinks = [
   {
     id: 1,
-    link: 'htts://www.linkedin.com/company/non-of-your-business',
+    originalLink: 'htts://www.linkedin.com/company/non-of-your-business',
     shortenedLink: 'htts://rel.ink/k342wdfs',
     isCopied: false,
   },
   {
     id: 2,
-    link: 'htts://www.linkedin.com/company/non-of-your-business',
+    originalLink: 'htts://www.linkedin.com/company/non-of-your-business',
     shortenedLink: 'htts://rel.ink/k342wdfs',
     isCopied: true,
   },
 ];
 
 const App = () => {
-  const [links, setLinks] = useState(tempLinks);
-  const [link, setLink] = useState(
-    'https://fkhadra.github.io/react-toastify/introduction'
-  );
+  const [links, setLinks] = useState([]);
+  const [link, setLink] = useState('');
 
   const shortenUrl = async () => {
     try {
-      const response = await fetch('https://cleanuri.com/api/v1/shorten', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: 'url=https%3A%2F%2Fgoogle.com%2F',
-      });
+      const response = await fetch(
+        `https://api.tinyurl.com/create?api_token=${
+          import.meta.env.VITE_TINY_URL
+        }`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            url: `${link}`,
+            domain: 'tinyurl.com',
+            description: 'string',
+          }),
+        }
+      );
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-      } else {
-        throw new Error('Failed to shorten URL');
+      if (!response.ok) return;
+
+      const data = await response.json();
+
+      const { tiny_url: shortenedLink, url: originalLink } = data.data;
+
+      if (shortenedLink) {
+        const newAddedLink = {
+          id: Date.now(),
+          originalLink,
+          shortenedLink,
+          isCopied: false,
+        };
+
+        setLinks((links) => [...links, newAddedLink]);
+        setLink('');
       }
     } catch (error) {
-      console.error('Error occurred:', error);
+      console.log('Error occurred:', error);
     }
   };
 
@@ -59,6 +77,7 @@ const App = () => {
 
       <Section>
         <Input
+          link={link}
           setLink={setLink}
           onShortenURL={shortenUrl}
         />
