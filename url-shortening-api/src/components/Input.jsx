@@ -3,11 +3,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Input = ({ link, setLink, onShortenURL }) => {
-  const notifyError = () => toast.error('Invalid Input!');
+  const notifyError = (message) => toast.error(message);
 
   const handleInput = () => {
     if (!link) {
-      notifyError();
+      notifyError('Invalid Input!');
       return;
     }
 

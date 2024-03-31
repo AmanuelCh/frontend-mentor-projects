@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -25,11 +26,22 @@ const tempLinks = [
 ];
 
 const App = () => {
-  const [links, setLinks] = useState([]);
+  const [links, setLinks] = useLocalStorage([], 'links');
   const [link, setLink] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const notifyError = (message) =>
+    toast.error(message, {
+      autoClose: 2000,
+    });
+  const notifyInfo = () => toast.info('Make sure to insert a valid link');
 
   const shortenUrl = async () => {
     try {
+      setIsLoading(true);
+
+      // isLoading ?
+
       const response = await fetch(
         `https://api.tinyurl.com/create?api_token=${
           import.meta.env.VITE_TINY_URL
@@ -47,7 +59,13 @@ const App = () => {
         }
       );
 
-      if (!response.ok) return;
+      if (!response.ok) {
+        notifyError('Invalid Input!');
+        setTimeout(() => {
+          notifyInfo();
+        }, 2500);
+        return;
+      }
 
       const data = await response.json();
 
@@ -63,6 +81,7 @@ const App = () => {
 
         setLinks((links) => [...links, newAddedLink]);
         setLink('');
+        setIsLoading(false);
       }
     } catch (error) {
       console.log('Error occurred:', error);
@@ -81,7 +100,10 @@ const App = () => {
           setLink={setLink}
           onShortenURL={shortenUrl}
         />
-        <Statistics links={links} />
+        <Statistics
+          links={links}
+          setLinks={setLinks}
+        />
       </Section>
 
       <CTA />
