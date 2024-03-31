@@ -29,18 +29,36 @@ const App = () => {
   const [links, setLinks] = useLocalStorage([], 'links');
   const [link, setLink] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isDuplicate, setIsDuplicate] = useState(false);
 
-  const notifyError = (message) =>
+  const notifyError = (message) => {
     toast.error(message, {
       autoClose: 2000,
     });
+  };
+
   const notifyInfo = () => toast.info('Make sure to insert a valid link');
 
   const shortenUrl = async () => {
     try {
       setIsLoading(true);
+      setIsDuplicate(false);
 
-      // isLoading ?
+      // check if link already exists
+      const checkDuplicateLink = () => {
+        links.map((lnk) => {
+          if (lnk.originalLink === link) {
+            setIsDuplicate(true);
+            notifyError('Link already exists');
+            setLink('');
+          }
+        });
+
+        return;
+      };
+
+      checkDuplicateLink();
+      if (isDuplicate) return;
 
       const response = await fetch(
         `https://api.tinyurl.com/create?api_token=${
@@ -85,6 +103,8 @@ const App = () => {
       }
     } catch (error) {
       console.log('Error occurred:', error);
+    } finally {
+      setIsDuplicate(false);
     }
   };
 

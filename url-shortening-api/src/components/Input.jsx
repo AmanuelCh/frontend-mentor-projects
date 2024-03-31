@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Input = ({ link, setLink, onShortenURL }) => {
+  const inputRef = useRef(null);
+
   const notifyError = (message) => toast.error(message);
 
   const handleInput = () => {
@@ -12,6 +14,7 @@ const Input = ({ link, setLink, onShortenURL }) => {
     }
 
     onShortenURL();
+    inputRef.current.focus();
   };
 
   return (
@@ -23,6 +26,7 @@ const Input = ({ link, setLink, onShortenURL }) => {
           value={link}
           onChange={(e) => setLink(e.target.value)}
           placeholder='Shorten a link here'
+          ref={inputRef}
         />
         <button
           className='btn px-8 rounded-md font-semibold hover:bg-cyan-300'

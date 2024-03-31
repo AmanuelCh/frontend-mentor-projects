@@ -1,7 +1,14 @@
 const Link = ({ link, setLinks }) => {
   const handleCopy = () => {
+    navigator.clipboard.writeText(link.shortenedLink);
+
     link.isCopied = !link.isCopied;
     setLinks((links) => [...links]);
+
+    setTimeout(() => {
+      link.isCopied = false;
+      setLinks((links) => [...links]);
+    }, 5000);
   };
 
   return (
