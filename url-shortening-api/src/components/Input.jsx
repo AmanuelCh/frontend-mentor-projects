@@ -2,18 +2,40 @@ import { useRef, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Input = ({ link, setLink, onShortenURL }) => {
+const Input = ({ link, links, setLink, onShortenURL }) => {
+  // disallow shortening if the same link exists twice
+  const [isDuplicate, setIsDuplicate] = useState(false);
+
   const inputRef = useRef(null);
 
-  const notifyError = (message) => toast.error(message);
+  const notifyError = (message) =>
+    toast.error(message, {
+      autoClose: 3000,
+    });
 
   const handleInput = () => {
     if (!link) {
+      // handle no user input
       notifyError('Invalid Input!');
       return;
     }
 
-    onShortenURL();
+    links.map((lnk) => {
+      if (lnk.originalLink === link) {
+        setIsDuplicate(true);
+        setLink('');
+      }
+    });
+
+    // don't call the api if duplicate links exist
+    if (isDuplicate) {
+      notifyError('No more than 2 duplicates!');
+      setIsDuplicate(false);
+      return;
+    } else {
+      onShortenURL();
+    }
+
     inputRef.current.focus();
   };
 

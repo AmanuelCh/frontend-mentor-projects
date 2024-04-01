@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Logo from '../assets/logo.svg';
 
 const Navbar = () => {
+  // menu toggle functionality
   const [isOpen, setIsOpen] = useState(false);
 
   return (

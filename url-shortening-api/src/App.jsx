@@ -10,26 +10,10 @@ import Input from './components/Input';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 
-const tempLinks = [
-  {
-    id: 1,
-    originalLink: 'htts://www.linkedin.com/company/non-of-your-business',
-    shortenedLink: 'htts://rel.ink/k342wdfs',
-    isCopied: false,
-  },
-  {
-    id: 2,
-    originalLink: 'htts://www.linkedin.com/company/non-of-your-business',
-    shortenedLink: 'htts://rel.ink/k342wdfs',
-    isCopied: true,
-  },
-];
-
 const App = () => {
   const [links, setLinks] = useLocalStorage([], 'links');
   const [link, setLink] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isDuplicate, setIsDuplicate] = useState(false);
 
   const notifyError = (message) => {
     toast.error(message, {
@@ -42,23 +26,6 @@ const App = () => {
   const shortenUrl = async () => {
     try {
       setIsLoading(true);
-      setIsDuplicate(false);
-
-      // check if link already exists
-      const checkDuplicateLink = () => {
-        links.map((lnk) => {
-          if (lnk.originalLink === link) {
-            setIsDuplicate(true);
-            notifyError('Link already exists');
-            setLink('');
-          }
-        });
-
-        return;
-      };
-
-      checkDuplicateLink();
-      if (isDuplicate) return;
 
       const response = await fetch(
         `https://api.tinyurl.com/create?api_token=${
@@ -90,6 +57,7 @@ const App = () => {
       const { tiny_url: shortenedLink, url: originalLink } = data.data;
 
       if (shortenedLink) {
+        // construct new object
         const newAddedLink = {
           id: Date.now(),
           originalLink,
@@ -97,14 +65,17 @@ const App = () => {
           isCopied: false,
         };
 
+        // update the state
         setLinks((links) => [...links, newAddedLink]);
         setLink('');
         setIsLoading(false);
       }
     } catch (error) {
       console.log('Error occurred:', error);
-    } finally {
-      setIsDuplicate(false);
+      console.log(error);
+      if (error.includes('NetworkError')) {
+        notifyError('Check your network connection!');
+      }
     }
   };
 
@@ -117,6 +88,7 @@ const App = () => {
       <Section>
         <Input
           link={link}
+          links={links}
           setLink={setLink}
           onShortenURL={shortenUrl}
         />

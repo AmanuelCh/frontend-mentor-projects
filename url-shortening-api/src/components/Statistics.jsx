@@ -29,6 +29,7 @@ const Statistics = ({ links, setLinks }) => {
   return (
     <div className='statistics max-w-[90%] container mx-auto lg:max-w-[976px] xl:max-w-[1440px]'>
       {links.map((link) => (
+        // render a link component for each link
         <Link
           link={link}
           setLinks={setLinks}

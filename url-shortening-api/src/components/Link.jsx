@@ -1,10 +1,14 @@
 const Link = ({ link, setLinks }) => {
+  // handle copying items
   const handleCopy = () => {
+    // write the text to the clipboard
     navigator.clipboard.writeText(link.shortenedLink);
 
+    // show copy status
     link.isCopied = !link.isCopied;
     setLinks((links) => [...links]);
 
+    // change back copy status to default after 5 sec
     setTimeout(() => {
       link.isCopied = false;
       setLinks((links) => [...links]);
