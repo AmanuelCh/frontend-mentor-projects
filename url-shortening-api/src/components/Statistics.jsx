@@ -25,7 +25,7 @@ const statistics = [
   },
 ];
 
-const Statistics = ({ links, setLinks }) => {
+const Statistics = ({ links, setLinks, onDeleteLink }) => {
   return (
     <div className='statistics max-w-[90%] container mx-auto lg:max-w-[976px] xl:max-w-[1440px]'>
       {links.map((link) => (
@@ -34,6 +34,7 @@ const Statistics = ({ links, setLinks }) => {
           link={link}
           setLinks={setLinks}
           key={link.id}
+          onDeleteLink={onDeleteLink}
         />
       ))}
 

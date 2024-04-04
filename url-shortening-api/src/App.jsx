@@ -23,6 +23,10 @@ const App = () => {
 
   const notifyInfo = () => toast.info('Make sure to insert a valid link');
 
+  const handleDelete = (id) => {
+    setLinks((links) => links.filter((lnk) => lnk.id !== id));
+  };
+
   const shortenUrl = async () => {
     try {
       setIsLoading(true);
@@ -95,6 +99,7 @@ const App = () => {
         <Statistics
           links={links}
           setLinks={setLinks}
+          onDeleteLink={handleDelete}
         />
       </Section>
 

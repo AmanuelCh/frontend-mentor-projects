@@ -1,4 +1,4 @@
-const Link = ({ link, setLinks }) => {
+const Link = ({ link, setLinks, onDeleteLink }) => {
   // handle copying items
   const handleCopy = () => {
     // write the text to the clipboard
@@ -45,9 +45,10 @@ const Link = ({ link, setLinks }) => {
           </button>
         </div>
 
-        <div className='absolute right-1 top-1 bg-red w-[18px] h-[18px] text-[12px] cursor-pointer rounded-full group-hover:block lg:right-[98%] lg:hidden lg:px-1.5 text-center' onClick={() => {
-          setLinks(links => links.map(lnk => lnk.id !== link.id))
-        }}>
+        <div
+          className='absolute right-1 top-1 bg-red w-[18px] h-[18px] text-[12px] cursor-pointer rounded-full group-hover:block lg:right-[98%] lg:hidden lg:px-1.5 text-center'
+          onClick={() => onDeleteLink(link.id)}
+        >
           <span>x</span>
         </div>
       </div>
