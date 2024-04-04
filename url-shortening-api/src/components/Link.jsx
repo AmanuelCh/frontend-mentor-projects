@@ -17,7 +17,7 @@ const Link = ({ link, setLinks }) => {
 
   return (
     <div>
-      <div className='flex justify-between items-start lg:items-center bg-white mt-4 py-3 px-4 rounded-md flex-col lg:flex-row'>
+      <div className='flex justify-between items-start lg:items-center bg-white mt-4 py-3 px-4 rounded-md flex-col lg:flex-row relative group'>
         <a
           className='text-veryDarkBlue w-[90%]  border-b border-gray-300 pb-2 lg:w-[60%] lg:border-b-0 lg:pb-0'
           href={link.originalLink}
@@ -43,6 +43,12 @@ const Link = ({ link, setLinks }) => {
           >
             {link.isCopied ? 'Copied' : 'Copy'}
           </button>
+        </div>
+
+        <div className='absolute right-1 top-1 bg-red w-[18px] h-[18px] text-[12px] cursor-pointer rounded-full group-hover:block lg:right-[98%] lg:hidden lg:px-1.5 text-center' onClick={() => {
+          setLinks(links => links.map(lnk => lnk.id !== link.id))
+        }}>
+          <span>x</span>
         </div>
       </div>
     </div>
