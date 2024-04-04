@@ -33,7 +33,18 @@ const Input = ({ link, links, setLink, onShortenURL }) => {
       setIsDuplicate(false);
       return;
     } else {
-      onShortenURL();
+      // make the request and display a loading state
+      toast.promise(
+        onShortenURL(),
+        {
+          pending: 'Shortening URL...',
+          success: 'Successful!',
+          error: 'Error happened!',
+        },
+        {
+          autoClose: false,
+        }
+      );
     }
 
     inputRef.current.focus();

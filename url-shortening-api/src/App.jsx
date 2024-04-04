@@ -13,7 +13,6 @@ import Footer from './components/Footer';
 const App = () => {
   const [links, setLinks] = useLocalStorage([], 'links');
   const [link, setLink] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   const notifyError = (message) => {
     toast.error(message, {
@@ -23,14 +22,19 @@ const App = () => {
 
   const notifyInfo = () => toast.info('Make sure to insert a valid link');
 
+  const notifySuccess = (msg) =>
+    toast.success(msg, {
+      autoClose: 2000,
+    });
+
+  // handle link deletion
   const handleDelete = (id) => {
     setLinks((links) => links.filter((lnk) => lnk.id !== id));
+    notifySuccess('Link removed!');
   };
 
   const shortenUrl = async () => {
     try {
-      setIsLoading(true);
-
       const response = await fetch(
         `https://api.tinyurl.com/create?api_token=${
           import.meta.env.VITE_TINY_URL
@@ -72,14 +76,12 @@ const App = () => {
         // update the state
         setLinks((links) => [...links, newAddedLink]);
         setLink('');
-        setIsLoading(false);
       }
     } catch (error) {
       console.log('Error occurred:', error);
       console.log(error);
-      if (error.includes('NetworkError')) {
-        notifyError('Check your network connection!');
-      }
+    } finally {
+      toast.dismiss();
     }
   };
 
