@@ -1,7 +1,9 @@
+import Wrapper from './components/Wrapper';
+
 const App = () => {
   return (
-    <div>
-      <p>App</p>
+    <div className=''>
+      <Wrapper />
     </div>
   );
 };

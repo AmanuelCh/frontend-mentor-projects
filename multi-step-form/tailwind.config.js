@@ -21,6 +21,10 @@ export default {
         alabaster: 'hsl(231, 100%, 99%)',
         white: 'hsl(0, 0%, 100%)',
       },
+      fontFamily: {
+        ubuntuMedium: ['Ubuntu-Medium', 'sans-serif'],
+        ubuntuBold: ['Ubuntu-Bold', 'sans-serif'],
+      },
     },
   },
   plugins: [],

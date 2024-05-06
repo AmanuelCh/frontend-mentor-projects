@@ -39,20 +39,3 @@ The designs were created to the following widths:
 - Weights: 400, 500, 700
 
 > 💎 [Upgrade to Pro](https://www.frontendmentor.io/pro?ref=style-guide) for design file access to see all design details and get hands-on experience using a professional workflow with tools like Figma.
-
-import useMedia from 'use-media';
-// Alternatively, you can import as:
-// import {useMedia} from 'use-media';
-
-const Demo = () => {
-  // Accepts an object of features to test
-  const isWide = useMedia({minWidth: '1000px'});
-  // Or a regular media query string
-  const reduceMotion = useMedia('(prefers-reduced-motion: reduce)');
-
-  return (
-    <div>
-      Screen is wide: {isWide ? '😃' : '😢'}
-    </div>
-  );
-};
