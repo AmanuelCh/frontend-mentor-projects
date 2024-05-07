@@ -1,13 +1,15 @@
 import { useState } from 'react';
+import Button from './Button';
 
-const UserInfo = ({ currentIndex, dispatch }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+const UserInfo = ({
+  currentIndex,
+  inputError,
+  dispatch,
+  name,
+  email,
+  errorType,
+}) => {
   const [phone, setPhone] = useState('');
-
-  const handleClick = () => {
-    dispatch({ type: 'next', payload: currentIndex + 1 });
-  };
 
   return (
     <div>
@@ -26,9 +28,14 @@ const UserInfo = ({ currentIndex, dispatch }) => {
           <span className='text-marineBlue text-[15px]'>Name</span>
           <input
             type='text'
+            className={`${
+              errorType === 'nameError' && inputError && 'border-strawberryRed'
+            }`}
             placeholder='e.g Stephen King'
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) =>
+              dispatch({ type: 'nameChange', payload: e.target.value })
+            }
             required
           />
         </div>
@@ -36,9 +43,14 @@ const UserInfo = ({ currentIndex, dispatch }) => {
           <span className='text-marineBlue text-[15px]'>Email Address</span>
           <input
             type='email'
+            className={`${
+              errorType === 'emailError' && inputError && 'border-strawberryRed'
+            }`}
             placeholder='e.g stephenking@gmail.com'
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) =>
+              dispatch({ type: 'emailChange', payload: e.target.value })
+            }
             required
           />
         </div>
@@ -53,16 +65,14 @@ const UserInfo = ({ currentIndex, dispatch }) => {
           />
         </div>
 
-        <div className='flex justify-end -mt-16 relative top-32 lg:-mt-32'>
-          <button
-            type='submit'
-            className='bg-marineBlue w-fit text-alabaster py-3 px-6 rounded-lg hover:bg-slate-800'
-            onClick={handleClick}
-            disabled={currentIndex > 4 ? true : false}
-          >
-            Next Step
-          </button>
-        </div>
+        <Button
+          currentIndex={currentIndex}
+          dispatch={dispatch}
+          amount={1}
+          type='form'
+          name={name}
+          email={email}
+        />
       </form>
     </div>
   );

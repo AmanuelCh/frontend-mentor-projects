@@ -15,7 +15,7 @@ const nums = [
   },
 ];
 
-const Sidebar = ({ currentIndex, dispatch, onHandleClick }) => {
+const Sidebar = ({ currentIndex, onHandleClick }) => {
   return (
     <div className='lg:p-6 lg:pl-8 lg:rounded-xl text-alabaster lg:relative absolute top-0 left-0 sidebar'>
       <Steps
@@ -32,7 +32,7 @@ const Sidebar = ({ currentIndex, dispatch, onHandleClick }) => {
                 : 'border'
             } py-1 px-3 rounded-full cursor-pointer`}
             onClick={() => onHandleClick(index + 1)}
-            key={num}
+            key={index}
           >
             {num.num}
           </div>
