@@ -35,17 +35,27 @@ const Button = ({ currentIndex, dispatch, amount, type, name, email }) => {
           <button
             className='w-fit text-marineBlue py-3 px-6 rounded-lg hover:text-purplishBlue'
             onClick={handlePrevClick}
-            disabled={currentIndex > 4 ? true : false}
+            disabled={currentIndex < 1 ? true : false}
           >
             Go Back
           </button>
-          <button
-            className='bg-marineBlue w-fit text-alabaster py-3 px-6 rounded-lg hover:bg-slate-800'
-            onClick={handleNextClick}
-            disabled={currentIndex > 4 ? true : false}
-          >
-            Next Step
-          </button>
+
+          {type === 'confirm' ? (
+            <button
+              className='bg-marineBlue w-fit text-alabaster py-3 px-6 rounded-lg hover:bg-slate-800'
+              onClick={handleNextClick}
+            >
+              Confirm
+            </button>
+          ) : (
+            <button
+              className='bg-marineBlue w-fit text-alabaster py-3 px-6 rounded-lg hover:bg-slate-800'
+              onClick={handleNextClick}
+              disabled={currentIndex >= 4 ? true : false}
+            >
+              Next Step
+            </button>
+          )}
         </>
       )}
     </div>

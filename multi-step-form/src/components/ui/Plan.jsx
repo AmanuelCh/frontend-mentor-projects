@@ -79,7 +79,9 @@ const Plan = ({ planType, currentIndex, dispatch, mode }) => {
           onClick={handleToggleClick}
         >
           <div
-            className='bg-white w-[10px] h-p[10px] rounded-full p-2 absolute top-1 left-1'
+            className={`bg-white w-[10px] h-p[10px] rounded-full p-2 absolute top-1 ${
+              planType === 'mo' ? 'left-1' : 'left-7'
+            }`}
             ref={toggleEl}
           ></div>
         </div>

@@ -6,6 +6,7 @@ import UserInfo from './ui/UserInfo';
 import Plan from './ui/Plan';
 import Addons from './ui/Addons';
 import Summary from './ui/Summary';
+import Confirm from './ui/Confirm';
 
 const initialState = {
   currentIndex: 1,
@@ -29,6 +30,7 @@ const initialState = {
   email: '',
   inputError: false,
   errorType: '',
+  selectedAddons: [],
 };
 
 const reducer = (state, action) => {
@@ -47,6 +49,25 @@ const reducer = (state, action) => {
       return { ...state, name: action.payload };
     case 'emailChange':
       return { ...state, email: action.payload };
+    case 'addAddons':
+      return {
+        ...state,
+        selectedAddons: [...state.selectedAddons, action.payload],
+      };
+    case 'removeAddons':
+      return {
+        ...state,
+        selectedAddons: [
+          ...state.selectedAddons.filter(
+            (addon) => addon.title !== action.payload.title
+          ),
+        ],
+      };
+    case 'resetAddons':
+      return {
+        ...state,
+        selectedAddons: [],
+      };
 
     default:
       break;
@@ -55,7 +76,17 @@ const reducer = (state, action) => {
 
 const Wrapper = () => {
   const [
-    { currentIndex, planType, fees, mode, name, email, inputError, errorType },
+    {
+      currentIndex,
+      planType,
+      fees,
+      mode,
+      name,
+      email,
+      inputError,
+      errorType,
+      selectedAddons,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
 
@@ -97,8 +128,24 @@ const Wrapper = () => {
             mode={mode}
           />
         )}
-        {currentIndex === 3 && <Addons />}
-        {currentIndex === 4 && <Summary />}
+        {currentIndex === 3 && (
+          <Addons
+            currentIndex={currentIndex}
+            planType={planType}
+            dispatch={dispatch}
+          />
+        )}
+        {currentIndex === 4 && (
+          <Summary
+            currentIndex={currentIndex}
+            planType={planType}
+            mode={mode}
+            fees={fees}
+            selectedAddons={selectedAddons}
+            dispatch={dispatch}
+          />
+        )}
+        {currentIndex === 5 && <Confirm />}
       </Main>
     </div>
   );
