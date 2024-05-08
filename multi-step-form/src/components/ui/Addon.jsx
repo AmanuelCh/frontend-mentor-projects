@@ -1,6 +1,9 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
-const Addon = ({ addon, planType, dispatch }) => {
+import { motion } from 'framer-motion';
+import { fadeIn } from '../../../utils/motion';
+
+const Addon = ({ addon, planType, index, dispatch }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -12,11 +15,14 @@ const Addon = ({ addon, planType, dispatch }) => {
   };
 
   return (
-    <div
+    <motion.div
       className={`flex flex-col lg:flex-row lg:items-center justify-between p-4 border rounded-lg hover:border-purplishBlue cursor-pointer ${
         isClicked && 'border-purplishBlue'
       }`}
       onClick={() => handleClick()}
+      variants={fadeIn('left', 'spring', 0.3 * index, 0.8)}
+      initial='hidden'
+      whileInView='show'
     >
       <div className='flex items-center gap-6'>
         <input
@@ -35,7 +41,7 @@ const Addon = ({ addon, planType, dispatch }) => {
         +${planType === 'mo' ? addon.price : addon.price * 10}/
         {planType === 'mo' ? 'mo' : 'yr'}
       </p>
-    </div>
+    </motion.div>
   );
 };
 

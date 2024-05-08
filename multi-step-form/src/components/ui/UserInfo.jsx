@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import Button from './Button';
 
+import { motion } from 'framer-motion';
+import { textVariant, fadeIn } from '../../../utils/motion';
+
 const UserInfo = ({
   currentIndex,
   inputError,
@@ -13,16 +16,29 @@ const UserInfo = ({
 
   return (
     <div>
-      <h2 className='lg:text-4xl text-3xl text-marineBlue font-semibold font-ubuntuMedium'>
+      <motion.h2
+        className='lg:text-4xl text-3xl text-marineBlue font-semibold font-ubuntuMedium'
+        variants={textVariant(0.05)}
+        initial='hidden'
+        whileInView='show'
+      >
         Personal info
-      </h2>
-      <p className='mt-3 mb-8 text-coolGray'>
+      </motion.h2>
+      <motion.p
+        className='mt-3 mb-8 text-coolGray'
+        variants={textVariant(0.1)}
+        initial='hidden'
+        whileInView='show'
+      >
         Please provide your name, email address, and phone number
-      </p>
+      </motion.p>
 
-      <form
+      <motion.form
         className='flex flex-col gap-4 lg:gap-8'
         onSubmit={(e) => e.preventDefault()}
+        variants={fadeIn('left', 'spring', 0.5, 0.8)}
+        initial='hidden'
+        whileInView='show'
       >
         <div className='flex flex-col gap-1'>
           <span className='text-marineBlue text-[15px]'>Name</span>
@@ -73,7 +89,7 @@ const UserInfo = ({
           name={name}
           email={email}
         />
-      </form>
+      </motion.form>
     </div>
   );
 };

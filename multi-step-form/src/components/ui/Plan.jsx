@@ -4,6 +4,9 @@ import ProSvg from '../../../public/assets/images/icon-pro.svg';
 import { useRef } from 'react';
 import Button from './Button';
 
+import { motion } from 'framer-motion';
+import { textVariant, fadeIn } from '../../../utils/motion';
+
 const plans = [
   {
     title: 'Arcade',
@@ -36,19 +39,32 @@ const Plan = ({ planType, currentIndex, dispatch, mode }) => {
 
   return (
     <div>
-      <h2 className='lg:text-4xl text-3xl text-marineBlue font-semibold font-ubuntuMedium'>
+      <motion.h2
+        className='lg:text-4xl text-3xl text-marineBlue font-semibold font-ubuntuMedium'
+        variants={textVariant(0.05)}
+        initial='hidden'
+        whileInView='show'
+      >
         Select your plan
-      </h2>
-      <p className='mt-3 mb-8 text-coolGray'>
+      </motion.h2>
+      <motion.p
+        className='mt-3 mb-8 text-coolGray'
+        variants={textVariant(0.1)}
+        initial='hidden'
+        whileInView='show'
+      >
         You have the option of monthly or yearly billing.
-      </p>
+      </motion.p>
 
       <div className='grid lg:grid-cols-3 gap-6'>
-        {plans.map((plan) => (
-          <div
+        {plans.map((plan, index) => (
+          <motion.div
             className={`flex lg:flex-col gap-4 px-4 py-6 border border-lightGray rounded-lg lg:px-6 lg:py-8 hover:border-purplishBlue cursor-pointer ${
               plan.title.toLowerCase() === mode && 'border-purplishBlue'
             }`}
+            variants={fadeIn('left', 'spring', 0.3 * index, 0.8)}
+            initial='hidden'
+            whileInView='show'
             key={plan.title}
             onClick={() => handleModeClick(plan.title.toLowerCase())}
           >
@@ -68,7 +84,7 @@ const Plan = ({ planType, currentIndex, dispatch, mode }) => {
                 <p className='text-marineBlue text-[14px]'>2 months free</p>
               )}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

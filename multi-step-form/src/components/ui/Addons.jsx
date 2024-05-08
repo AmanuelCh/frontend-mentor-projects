@@ -2,6 +2,9 @@ import { useEffect } from 'react';
 import Addon from './Addon';
 import Button from './Button';
 
+import { motion } from 'framer-motion';
+import { textVariant } from '../../../utils/motion';
+
 const addons = [
   {
     title: 'Online service',
@@ -27,12 +30,22 @@ const Addons = ({ planType, currentIndex, dispatch }) => {
 
   return (
     <div>
-      <h2 className='lg:text-4xl text-3xl text-marineBlue font-semibold font-ubuntuMedium'>
+      <motion.h2
+        className='lg:text-4xl text-3xl text-marineBlue font-semibold font-ubuntuMedium'
+        variants={textVariant(0.05)}
+        initial='hidden'
+        whileInView='show'
+      >
         Pick add-ons
-      </h2>
-      <p className='mt-3 mb-8 text-coolGray'>
+      </motion.h2>
+      <motion.p
+        className='mt-3 mb-8 text-coolGray'
+        variants={textVariant(0.1)}
+        initial='hidden'
+        whileInView='show'
+      >
         Add-ons help enhance your gaming experience.
-      </p>
+      </motion.p>
       <div className='flex flex-col gap-6'>
         {addons.map((addon, index) => (
           <Addon

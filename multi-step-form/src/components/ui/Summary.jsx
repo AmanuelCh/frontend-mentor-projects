@@ -1,5 +1,8 @@
 import Button from './Button';
 
+import { motion } from 'framer-motion';
+import { textVariant, fadeIn } from '../../../utils/motion';
+
 const Summary = ({
   currentIndex,
   planType,
@@ -31,14 +34,29 @@ const Summary = ({
 
   return (
     <div>
-      <h2 className='lg:text-4xl text-3xl text-marineBlue font-semibold font-ubuntuMedium'>
+      <motion.h2
+        className='lg:text-4xl text-3xl text-marineBlue font-semibold font-ubuntuMedium'
+        variants={textVariant(0.05)}
+        initial='hidden'
+        whileInView='show'
+      >
         Finishing up
-      </h2>
-      <p className='mt-3 mb-8 text-coolGray'>
+      </motion.h2>
+      <motion.p
+        className='mt-3 mb-8 text-coolGray'
+        variants={textVariant(0.1)}
+        initial='hidden'
+        whileInView='show'
+      >
         Double-check everything looks OK before confirming.
-      </p>
+      </motion.p>
 
-      <div className='bg-alabaster rounded-lg py-5 px-5 lg:px-7 text-coolGray'>
+      <motion.div
+        className='bg-alabaster rounded-lg py-5 px-5 lg:px-7 text-coolGray'
+        variants={fadeIn('left', 'spring', 0.5, 0.8)}
+        initial='hidden'
+        whileInView='show'
+      >
         <div>
           <div
             className={`flex justify-between items-center mb-6 ${
@@ -76,16 +94,21 @@ const Summary = ({
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className='flex justify-between p-7 pb-0 lg:pb-8'>
+      <motion.div
+        className='flex justify-between p-7 pb-0 lg:pb-8'
+        variants={fadeIn('left', 'spring', 0.5, 0.8)}
+        initial='hidden'
+        whileInView='show'
+      >
         <p className='text-coolGray text-[14px]'>
           Total (per {planType === 'mo' ? 'month' : 'year'})
         </p>
         <p className='text-purplishBlue lg:text-[20px] font-bold'>
           +${totalFee}/{planType === 'mo' ? 'mo' : 'yr'}
         </p>
-      </div>
+      </motion.div>
 
       <div className='lg:mt-6 -mt-4'>
         <Button
