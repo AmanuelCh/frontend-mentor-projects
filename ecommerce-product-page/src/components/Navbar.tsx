@@ -1,4 +1,10 @@
-import { AvatarImg, CartIcon, Logo, MenuIcon } from "../shared/constants";
+import {
+  AvatarImg,
+  CartIcon,
+  DeleteButton,
+  Logo,
+  MenuIcon,
+} from "../shared/constants";
 import { CartItemType } from "../shared/types";
 
 type CartItemTypeProps = {
@@ -14,6 +20,10 @@ const Navbar = ({
   isCartOpen,
   onCartClick,
 }: CartItemTypeProps) => {
+  const handleDelete = () => {
+    setCartItems([]);
+  };
+
   return (
     <div className="mt-2 border-gray-200 p-3 pb-6 lg:mt-4 lg:border-b">
       <div className="relative flex items-center justify-between">
@@ -59,7 +69,7 @@ const Navbar = ({
 
         {/* CART ITEMS */}
         {isCartOpen && (
-          <div className="absolute right-0 top-[130%] z-20 h-[200px] w-full bg-white shadow-lg md:w-[350px]">
+          <div className="absolute right-0 top-[165%] z-20 h-[200px] w-full bg-white shadow-2xl md:w-[350px] lg:top-[130%]">
             <div>
               <h3 className="border-b border-gray-200 p-5 pb-5 pt-3">Cart</h3>
 
@@ -69,7 +79,37 @@ const Navbar = ({
                     Your cart is empty
                   </p>
                 ) : (
-                  "hey"
+                  cartItems.map((item) => (
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <img
+                          className="w-[40px] rounded lg:w-[50px]"
+                          src={item.image}
+                          alt="cart item image"
+                        />
+                        <div>
+                          <p className="text-[14px] text-dark-grayish-blue lg:text-[15px]">
+                            {item.title}
+                          </p>
+                          <p className="mt-1 text-[14px] tracking-wide text-dark-grayish-blue lg:text-base">
+                            ${item.price}.00 x {item.amount}{" "}
+                            <span className="pl-2 font-semibold text-black">
+                              ${item.price * item.amount}.00
+                            </span>
+                          </p>
+                        </div>
+                        <img
+                          className="cursor-pointer"
+                          src={DeleteButton}
+                          onClick={handleDelete}
+                          alt="delete item"
+                        />
+                      </div>
+                      <button className="mt-5 w-full rounded-lg bg-orange-primary py-3 font-semibold hover:opacity-80">
+                        Checkout
+                      </button>
+                    </div>
+                  ))
                 )}
               </div>
             </div>

@@ -6,10 +6,10 @@ import Product1 from "../assets/images/image-product-1.jpg";
 import Product2 from "../assets/images/image-product-2.jpg";
 import Product3 from "../assets/images/image-product-3.jpg";
 import Product4 from "../assets/images/image-product-4.jpg";
-import ProductThumbnail1 from "../assets/images/image-product-1-thumbnail.jpg";
-import ProductThumbnail2 from "../assets/images/image-product-2-thumbnail.jpg";
-import ProductThumbnail3 from "../assets/images/image-product-3-thumbnail.jpg";
-import ProductThumbnail4 from "../assets/images/image-product-4-thumbnail.jpg";
+import minusIcon from "../assets/images/icon-minus.svg";
+import plusIcon from "../assets/images/icon-plus.svg";
+import ButtonCart from "../assets/images/icon-cart-button.svg";
+import DeleteButton from "../assets/images/icon-delete.svg";
 
 export {
   Logo,
@@ -20,8 +20,8 @@ export {
   Product2,
   Product3,
   Product4,
-  ProductThumbnail1,
-  ProductThumbnail2,
-  ProductThumbnail3,
-  ProductThumbnail4,
+  minusIcon,
+  plusIcon,
+  ButtonCart,
+  DeleteButton,
 };

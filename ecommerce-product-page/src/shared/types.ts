@@ -1,5 +1,5 @@
 export interface CartItemType {
-  image: JSX.Element;
+  image: string;
   title: string;
   amount: number;
   price: number;
