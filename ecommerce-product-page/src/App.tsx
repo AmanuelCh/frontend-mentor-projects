@@ -23,6 +23,7 @@ function App() {
           setCartItems={setCartItems}
           isCartOpen={isCartOpen}
           onCartClick={handleCartClick}
+          setIsItemAdded={setIsItemAdded}
         />
       </div>
       <Hero

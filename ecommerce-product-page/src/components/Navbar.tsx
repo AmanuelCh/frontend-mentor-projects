@@ -12,6 +12,7 @@ type CartItemTypeProps = {
   setCartItems: (cartItems: CartItemType[]) => void;
   isCartOpen: boolean;
   onCartClick: () => void;
+  setIsItemAdded: (value: boolean) => void;
 };
 
 const Navbar = ({
@@ -19,9 +20,11 @@ const Navbar = ({
   setCartItems,
   isCartOpen,
   onCartClick,
+  setIsItemAdded,
 }: CartItemTypeProps) => {
   const handleDelete = () => {
     setCartItems([]);
+    setIsItemAdded(false);
   };
 
   return (
@@ -49,9 +52,12 @@ const Navbar = ({
         {/* CART AND AVATAR */}
         <div className="flex items-center gap-4 md:gap-10">
           <div
-            className="cursor-pointer rounded-full border-[1px] p-2 hover:border-gray-400"
+            className="relative cursor-pointer rounded-full border-[1px] p-2 hover:border-gray-400"
             onClick={onCartClick}
           >
+            <p className="absolute right-[-8%] top-[-20%] z-30 rounded-full bg-orange-primary px-[5px] text-[12px] font-bold text-white">
+              {cartItems.map((item) => item.amount)}
+            </p>
             <img
               src={CartIcon}
               className="w-[90%] md:w-[100%]"
