@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: Red-hat-regular;
+  src: url('./assets/fonts/static/RedHatText-Regular.ttf');
+}
+
+@font-face {
+  font-family: Red-hat-semi-bold;
+  src: url('./assets/fonts/static/RedHatText-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: Red-hat-bold;
+  src: url('./assets/fonts/static/RedHatText-Bold.ttf');
+}
+
+body {
+  font-family: Red-hat-regular;
+}
