@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import data from '../data/data.json';
+import { cartItemType, ItemType } from '../shared/type';
 
 // @ts-expect-error context default value
 const ItemContext = createContext();
@@ -7,20 +8,6 @@ const ItemContext = createContext();
 type Props = {
   children: React.ReactNode;
 };
-type ItemType = {
-  image: {
-    thumbnail: string;
-    mobile: string;
-    tablet: string;
-    desktop: string;
-  };
-  name: string;
-  category: string;
-  price: number;
-};
-type cartItemType = {
-  quantiy: number;
-} & ItemType;
 
 function ItemProvider({ children }: Props) {
   const [items, setItems] = useState<ItemType[]>(data);
