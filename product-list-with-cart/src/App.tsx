@@ -4,7 +4,7 @@ import Desserts from './components/Desserts';
 const App = () => {
   return (
     <>
-      <div className='w-[85%] max-w-[1344px] mx-auto mt-14 flex flex-col gap-8 lg:flex-row'>
+      <div className='w-[90%] max-w-[1440px] mx-auto mt-7 flex flex-col gap-6 lg:w-[85%] lg:flex-row lg:mt-14 mb-12'>
         <Desserts />
         <Cart />
       </div>
