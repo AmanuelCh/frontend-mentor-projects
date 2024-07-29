@@ -9,7 +9,7 @@ const Desserts = () => {
     <div className='w-full basis-[70%] px-2'>
       <h2 className='text-rose-900 text-4xl font-bold'>Desserts</h2>
 
-      <div className='mt-6 grid sm:grid-cols-3 gap-6 '>
+      <div className='mt-6 grid md:grid-cols-3 gap-6 '>
         {items.map((item: ItemType) => (
           <Item
             item={item}

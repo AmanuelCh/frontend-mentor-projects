@@ -8,7 +8,6 @@ export type ItemType = {
   name: string;
   category: string;
   price: number;
+  isInCart: boolean;
+  quantity: number;
 };
-export type cartItemType = {
-  quantiy: number;
-} & ItemType;
