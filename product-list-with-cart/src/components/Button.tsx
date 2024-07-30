@@ -1,10 +1,4 @@
-import React from 'react';
-
-type ButtonProps = {
-  children: React.ReactNode;
-  type: string;
-  onClick: () => void;
-};
+import { ButtonProps } from '../shared/type';
 
 function Button({ children, type, onClick }: ButtonProps) {
   return (
