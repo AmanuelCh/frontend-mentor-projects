@@ -1,6 +1,6 @@
 import { ButtonProps } from '../shared/type';
 
-function Button({ children, type, onClick }: ButtonProps) {
+function Button({ children, type, onclick }: ButtonProps) {
   return (
     <button
       className={`flex items-center px-5 py-[10px] rounded-full border text-[14px] font-semibold shadow-sm transition ${
@@ -8,7 +8,7 @@ function Button({ children, type, onClick }: ButtonProps) {
           ? 'gap-3 bg-white border-rose-400 text-rose-900 hover:border-red-primary hover:text-red-primary'
           : 'gap-10 bg-red-primary border-red-primary text-white cursor-default'
       }`}
-      onClick={onClick}
+      onClick={onclick}
     >
       {children}
     </button>

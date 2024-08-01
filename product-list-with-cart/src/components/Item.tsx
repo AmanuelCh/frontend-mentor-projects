@@ -50,7 +50,7 @@ const Item = ({ item }: ItemTypeProps) => {
         <div className='flex justify-center translate-y-[-50%]'>
           <Button
             type={item.isInCart ? 'update' : 'add'}
-            onClick={!item.isInCart ? handleAddClick : undefined}
+            onclick={!item.isInCart ? handleAddClick : undefined}
           >
             <div
               className={`flex items-center justify-center cursor-pointer ${

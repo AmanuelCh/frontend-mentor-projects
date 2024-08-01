@@ -27,5 +27,5 @@ export type ItemProviderProps = {
 export type ButtonProps = {
   children: React.ReactNode;
   type: string;
-  onClick: () => void;
+  onclick: () => void;
 };
