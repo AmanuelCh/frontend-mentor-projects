@@ -13,7 +13,7 @@ import {
 } from '../shared/constants';
 
 const Cart = () => {
-  const { cartItems } = useItem();
+  const { cartItems, handleNewOrder } = useItem();
 
   const totalPrice: number = cartItems.reduce(
     (sum: number, item: ItemType) => sum + item.price * item.quantity,
@@ -22,6 +22,11 @@ const Cart = () => {
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const modalRef = useRef(null);
+
+  const handleNewOrderClick = () => {
+    handleNewOrder();
+    setModalOpen(false);
+  };
 
   return (
     <>
@@ -125,7 +130,7 @@ const Cart = () => {
 
               <button
                 className='mt-10 w-full text-center bg-red-primary text-rose-50 font-semibold py-3 rounded-full hover:opacity-75'
-                onClick={() => setModalOpen(false)}
+                onClick={handleNewOrderClick}
               >
                 Start New Order
               </button>

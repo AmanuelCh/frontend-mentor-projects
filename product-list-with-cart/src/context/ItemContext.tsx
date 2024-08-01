@@ -69,6 +69,14 @@ function ItemProvider({ children }: ItemProviderProps) {
     );
   };
 
+  const handleNewOrder = () => {
+    setCartItems([]);
+
+    setItems((items) =>
+      items.map((item) => (true ? { ...item, isInCart: false } : item))
+    );
+  };
+
   return (
     <ItemContext.Provider
       value={{
@@ -77,6 +85,7 @@ function ItemProvider({ children }: ItemProviderProps) {
         handleAddCartItem,
         handleQuantityUpdate,
         handleRemoveItem,
+        handleNewOrder,
       }}
     >
       {children}

@@ -19,6 +19,7 @@ export type ContextProps = {
   handleAddCartItem: (item: ItemType) => void;
   handleQuantityUpdate: (item: ItemType, action: string) => void;
   handleRemoveItem: (item: ItemType) => void;
+  handleNewOrder: () => void;
 };
 export type ItemProviderProps = {
   children: React.ReactNode;
