@@ -1,8 +1,11 @@
+import Header from './components/Header';
+import JobListings from './components/JobListings';
+
 function App() {
-  // https://fonts.google.com/specimen/League+Spartan
   return (
     <>
-      <div>Hello World!</div>
+      <Header />
+      <JobListings />
     </>
   );
 }

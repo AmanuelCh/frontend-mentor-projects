@@ -19,3 +19,15 @@ body {
   background-color: hsl(180, 52%, 96%);
   font-family: LeagueSpartanRegular;
 }
+
+.header {
+  background-image: url('../public/images/bg-header-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (min-width: 480px) {
+  .header {
+    background-image: url('../public/images/bg-header-desktop.svg');
+  }
+}
