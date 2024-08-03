@@ -18,6 +18,10 @@ export default {
         'dark-grayish-cyan': 'hsl(180, 8%, 52%)',
         'very-dark-grayish-cyan': 'hsl(180, 14%, 20%)',
       },
+      fontFamily: {
+        lsMedium: ['LeagueSpartanMedium', 'sans-serif'],
+        lsBold: ['LeagueSpartanBold', 'sans-serif'],
+      },
     },
   },
   plugins: [],
