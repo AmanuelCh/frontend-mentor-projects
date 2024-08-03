@@ -15,6 +15,12 @@
   src: url('../public/fonts/League_Spartan/static/LeagueSpartan-Bold.ttf');
 }
 
+@layer components {
+  .skill {
+    @apply bg-lighter-grayish-cyan px-2 py-1 text-desaturated-dark-cyan text-[14px] font-lsBold rounded-sm cursor-pointer transition hover:bg-desaturated-dark-cyan hover:text-light-grayish-cyan;
+  }
+}
+
 body {
   background-color: hsl(180, 52%, 96%);
   font-family: LeagueSpartanRegular;
