@@ -19,6 +19,9 @@
   .skill {
     @apply bg-lighter-grayish-cyan px-2 py-1 text-desaturated-dark-cyan text-[14px] font-lsBold rounded-sm cursor-pointer transition hover:bg-desaturated-dark-cyan hover:text-light-grayish-cyan;
   }
+  .wrapper {
+    @apply w-11/12 max-w-screen-xl mx-auto mt-12 lg:w-3/4;
+  }
 }
 
 body {

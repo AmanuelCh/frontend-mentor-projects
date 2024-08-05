@@ -1,10 +1,21 @@
 import { JobListProp } from '../shared/types';
 
-const JobList = ({ job, setJobs, setFilters }: JobListProp) => {
+const JobList = ({ job, handleFilter }: JobListProp) => {
   const skills = job.languages.concat(job.tools);
+  // creating another tags array coz reverse() method mutates an array and returns a reference to the same array
+  const tags = skills.reverse().concat(job.level, job.role).reverse();
+
+  const handleFilterClick = (target: EventTarget) => {
+    // @ts-expect-error
+    handleFilter(target.textContent);
+  };
 
   return (
-    <div className='px-8 py-6 bg-white mb-12 flex flex-col justify-between border-l-4 border-l-desaturated-dark-cyan rounded-md drop-shadow-xl lg:flex-row lg:items-center lg:mb-6'>
+    <div
+      className={`px-5 py-6 bg-white mb-12 flex flex-col justify-between border-l-4  rounded-md drop-shadow-xl lg:flex-row lg:items-center lg:mb-6 lg:px-8 ${
+        job.new && job.featured ? 'border-l-desaturated-dark-cyan' : ''
+      }`}
+    >
       <div className='flex flex-col lg:gap-3 lg:flex-row lg:items-center'>
         <div className='-mt-12 lg:mt-0'>
           <img
@@ -32,7 +43,7 @@ const JobList = ({ job, setJobs, setFilters }: JobListProp) => {
           <p className='mt-2 text-very-dark-grayish-cyan text-lg font-lsBold cursor-pointer transition-colors md:text-xl md:mt-3 hover:text-desaturated-dark-cyan'>
             {job.position}
           </p>
-          <div className='mt-2 flex gap-3 text-dark-grayish-cyan'>
+          <div className='mt-2 flex gap-3 text-dark-grayish-cyan border-b pb-2 sm:border-b-0 sm:pb-0'>
             <p>{job.postedAt}</p>
             <p className='text-2xl translate-y-[-26%]'>.</p>
             <p>{job.contract}</p>
@@ -41,12 +52,15 @@ const JobList = ({ job, setJobs, setFilters }: JobListProp) => {
           </div>
         </div>
       </div>
-      <div className='flex flex-wrap gap-2 mt-2 lg:mt-0'>
-        <p className='skill'>{job.role}</p>
-        <p className='skill'>{job.level}</p>
-
-        {skills.map((skill) => (
-          <p className='skill'>{skill}</p>
+      <div className='flex flex-wrap gap-2 mt-4 sm:mt-2 lg:mt-0'>
+        {tags.map((tag, i) => (
+          <p
+            className='skill'
+            onClick={(e) => handleFilterClick(e.target)}
+            key={i}
+          >
+            {tag}
+          </p>
         ))}
       </div>
     </div>

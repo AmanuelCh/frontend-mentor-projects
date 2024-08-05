@@ -9,21 +9,56 @@ function App() {
   const [jobs, setJobs] = useState<JobsType[]>(data);
   const [filters, setFilters] = useState<string[]>([]);
 
+  const handleFilterClick = (filter: string) => {
+    if (filters.includes(filter)) return;
+
+    setFilters((filters) => [...filters, filter]);
+
+    setJobs((jobs) =>
+      jobs.filter(
+        (job) =>
+          job.role === filter ||
+          job.level === filter ||
+          job.languages.includes(filter) ||
+          job.tools.includes(filter)
+      )
+    );
+  };
+  const handleClearFilter = (filter: string) => {
+    setFilters((filters) =>
+      filters.filter((prevFilter) => prevFilter !== filter)
+    );
+    setJobs((jobs) =>
+      jobs.filter(
+        (job) =>
+          job.role !== filter ||
+          job.level !== filter ||
+          !job.languages.includes(filter) ||
+          !job.tools.includes(filter)
+      )
+    );
+  };
+  const handleClearAllFilter = () => {
+    setFilters([]);
+    setJobs(data);
+  };
+
   return (
     <>
       <Header />
 
       {filters.length ? (
         <Filters
-          setJobs={setJobs}
-          setFilters={setFilters}
+          filters={filters}
+          handleClearFilter={handleClearFilter}
+          handleClearAllFilter={handleClearAllFilter}
         />
       ) : null}
 
       <JobListings
         jobs={jobs}
-        setJobs={setJobs}
-        setFilters={setFilters}
+        filters={filters}
+        handleFilter={handleFilterClick}
       />
     </>
   );

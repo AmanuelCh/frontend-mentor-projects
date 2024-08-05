@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
-
 export type JobsType = {
   id: number;
   company: string;
@@ -17,15 +15,15 @@ export type JobsType = {
 };
 export type JobListingsProp = {
   jobs: JobsType[];
-  setJobs: Dispatch<SetStateAction<JobsType[]>>;
-  setFilters: Dispatch<SetStateAction<string[]>>;
+  filters: string[];
+  handleFilter: (filter: string) => void;
 };
 export type JobListProp = {
   job: JobsType;
-  setJobs: Dispatch<SetStateAction<JobsType[]>>;
-  setFilters: Dispatch<SetStateAction<string[]>>;
+  handleFilter: (filter: string) => void;
 };
 export type FiltersProp = {
-  setJobs: Dispatch<SetStateAction<JobsType[]>>;
-  setFilters: Dispatch<SetStateAction<string[]>>;
+  filters: string[];
+  handleClearFilter: (filter: string) => void;
+  handleClearAllFilter: () => void;
 };
