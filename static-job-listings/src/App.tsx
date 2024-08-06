@@ -10,34 +10,50 @@ function App() {
   const [filters, setFilters] = useState<string[]>([]);
 
   const handleFilterClick = (filter: string) => {
+    // Check if the filter is already applied
     if (filters.includes(filter)) return;
 
-    setFilters((filters) => [...filters, filter]);
+    // Add the new filter to the filters state
+    setFilters((prevFilters) => [...prevFilters, filter]);
 
-    setJobs((jobs) =>
-      jobs.filter(
-        (job) =>
-          job.role === filter ||
-          job.level === filter ||
-          job.languages.includes(filter) ||
-          job.tools.includes(filter)
+    // Filter the jobs based on the new filter
+    setJobs((prevJobs) =>
+      prevJobs.filter((job) =>
+        [job.role, job.level, ...job.languages, ...job.tools].includes(filter)
       )
     );
   };
+
   const handleClearFilter = (filter: string) => {
-    setFilters((filters) =>
-      filters.filter((prevFilter) => prevFilter !== filter)
-    );
-    setJobs((jobs) =>
-      jobs.filter(
-        (job) =>
-          job.role !== filter ||
-          job.level !== filter ||
-          !job.languages.includes(filter) ||
-          !job.tools.includes(filter)
-      )
-    );
+    //  Update filters to remove the specified filter
+    setFilters((prevFilters) => {
+      const updatedFilters = prevFilters.filter(
+        (prevFilter) => prevFilter !== filter
+      );
+
+      // Filter jobs based on the updated filters
+      const filteredJobs = data.filter((job) => {
+        const matchesRole = updatedFilters.includes(job.role);
+        const matchesLevel = updatedFilters.includes(job.level);
+        const matchesLanguages = updatedFilters.every((lang) =>
+          job.languages.includes(lang)
+        );
+        const matchesTools = updatedFilters.every((tool) =>
+          job.tools.includes(tool)
+        );
+
+        // Return true if the job matches any of the remaining filters
+        return matchesRole || matchesLevel || matchesLanguages || matchesTools;
+      });
+
+      // Update jobs state with the filtered jobs
+      !updatedFilters.length ? setJobs(data) : setJobs(filteredJobs);
+
+      // Return the updated filters
+      return updatedFilters;
+    });
   };
+
   const handleClearAllFilter = () => {
     setFilters([]);
     setJobs(data);
