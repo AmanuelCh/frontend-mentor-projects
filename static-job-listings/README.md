@@ -23,8 +23,8 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL]()
-- [Live Site URL]()
+- [Solution URL](https://www.frontendmentor.io/solutions/job-listings-with-filtering-using-react-ts-P-3AlQaEkj)
+- [Live Site URL](https://static-job-listings-frontend-me.netlify.app/)
 
 ## My process
 
