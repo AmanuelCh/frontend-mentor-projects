@@ -15,6 +15,29 @@
   src: url('assets/fonts/static/PlusJakartaSans-Bold.ttf');
 }
 
+@layer components {
+  .input-title {
+    @apply text-Slate700 text-sm font-jsMedium mb-3;
+  }
+  .calc-input {
+    @apply border border-Slate500 p-3 pl-16 rounded-md outline-none w-full font-jsBold cursor-pointer transition hover:border-Lime focus:border-Lime;
+  }
+  .calc-input--lower {
+    @apply px-4 pr-16;
+  }
+}
+
 body {
   font-family: PlusJakartaSans, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #e3f3fd;
+}
+
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+  }
 }
