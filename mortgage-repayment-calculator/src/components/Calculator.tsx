@@ -10,6 +10,7 @@ type Props = {
 const Calculator = ({
   setTotalMortgage,
   setOverallMortgage,
+  // @ts-expect-error
   totalMortgage,
 }: Props) => {
   const [mortgageAmount, setMortgageAmount]: any = useState();
