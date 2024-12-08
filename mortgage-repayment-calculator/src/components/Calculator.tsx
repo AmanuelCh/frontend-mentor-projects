@@ -98,7 +98,7 @@ const Calculator = (props: Props) => {
             </div>
           </div>
         </div>
-        <div className='mt-9'>
+        <div className='mt-9 mb-2'>
           <button className='bg-Lime py-3 px-8 flex items-center justify-center gap-3 font-jsBold rounded-full w-full lg:w-max hover:opacity-70'>
             <img
               src={calcImg}
