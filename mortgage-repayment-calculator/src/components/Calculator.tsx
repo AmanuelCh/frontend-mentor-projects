@@ -2,10 +2,16 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import calcImg from '../assets/images/icon-calculator.svg';
 
 type Props = {
+  totalMortgage: number;
   setTotalMortgage: Dispatch<SetStateAction<number>>;
+  setOverallMortgage: Dispatch<SetStateAction<number>>;
 };
 
-const Calculator = ({ setTotalMortgage }: Props) => {
+const Calculator = ({
+  setTotalMortgage,
+  setOverallMortgage,
+  totalMortgage,
+}: Props) => {
   const [mortgageAmount, setMortgageAmount]: any = useState();
   const [mortgageTerm, setMortgageTerm]: any = useState();
   const [interestRate, setInterestRate]: any = useState();
@@ -24,6 +30,7 @@ const Calculator = ({ setTotalMortgage }: Props) => {
     !interestRate && setInterestRate(null);
     if (!mortgageAmount || !mortgageTerm || !interestRate) return;
 
+    // convert them to use them in the formula
     const mortgageAmountNum = Number(mortgageAmount);
     const monthlyInterestRate = Number(interestRate) / 1200;
     const totalNumberOfPayments = Number(mortgageTerm) * 12;
@@ -36,11 +43,20 @@ const Calculator = ({ setTotalMortgage }: Props) => {
       const denominator =
         Math.pow(1 + monthlyInterestRate, totalNumberOfPayments) - 1;
       const totalMortgage = numerator / denominator;
+      const totalRepaid = Number(
+        (totalMortgage * totalNumberOfPayments).toFixed(2)
+      );
 
       setTotalMortgage(Number(totalMortgage.toFixed(2)));
+      setOverallMortgage(totalRepaid);
     } else if (mortgageType === 'interestOnly') {
       const totalMortgage = mortgageAmountNum * monthlyInterestRate;
+      const totalRepaid = Number(
+        (totalMortgage * totalNumberOfPayments + mortgageAmountNum).toFixed(2)
+      );
+
       setTotalMortgage(Number(totalMortgage.toFixed(2)));
+      setOverallMortgage(totalRepaid);
     }
   };
 
